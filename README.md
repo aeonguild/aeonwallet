@@ -1,3 +1,7 @@
+# BETA TESTING
+
+Please use this with caution. All software on this page is provided without warranty, as-is.
+
 # aeonwallet
 
 An original android wallet app built for Aeon.
