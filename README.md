@@ -20,7 +20,7 @@ Android apps are written in Java. Aeon source code is in C++. So in order to mak
 
 Some minor changes to aeon source code are necessary before compiling. Please see the changes https://github.com/ivoryguru/aeon/commits/master.
 
-Next, change directory to `external-libs` and run `sudo make install`. This will create the necesarry lib files for the app.
+Next, change directory to `external-libs` and run `sudo make install`. This will create the necessary lib files for the app.
 
 After this is all completed, you will be able to open the app in Android Studio and build.
 
