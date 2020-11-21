@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class TransactionInfo {
     static {
-        System.loadLibrary("aeon_transaction_info_jni");
+        System.loadLibrary("transaction_info_jni");
     }
     private static final String TAG = "Info";
     private final long handle;

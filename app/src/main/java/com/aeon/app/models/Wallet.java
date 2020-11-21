@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Wallet {
     static {
-        System.loadLibrary("aeon_wallet_jni");
+        System.loadLibrary("wallet_jni");
     }
     private static final String TAG = "Wallet";
     private long handle;

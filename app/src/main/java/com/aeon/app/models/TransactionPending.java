@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class TransactionPending {
     static {
-        System.loadLibrary("aeon_transaction_pending_jni");
+        System.loadLibrary("transaction_pending_jni");
     }
     private static final String TAG = "Pending";
     private long handle;

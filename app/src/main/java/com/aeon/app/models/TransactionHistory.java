@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class TransactionHistory {
     static {
-        System.loadLibrary("aeon_transaction_history_jni");
+        System.loadLibrary("transaction_history_jni");
     }
     private static final String TAG = "History";
     private long handle;
