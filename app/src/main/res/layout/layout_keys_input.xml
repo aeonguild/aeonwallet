@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_keys_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/text_account_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Account address"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/text_secret_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Secret View Key"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/text_account_address"
+        app:layout_constraintStart_toStartOf="@+id/text_account_address"
+        app:layout_constraintTop_toBottomOf="@+id/text_account_address" />
+
+    <EditText
+        android:id="@+id/text_secret_spend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Secret Spend Key"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/text_secret_view"
+        app:layout_constraintStart_toStartOf="@+id/text_secret_view"
+        app:layout_constraintTop_toBottomOf="@+id/text_secret_view" />
+
+    <EditText
+        android:id="@+id/text_restore_height_keys"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Restore Height"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/text_secret_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_secret_view"
+        app:layout_constraintTop_toBottomOf="@+id/text_secret_spend" />
+
+    <Button
+        android:id="@+id/button_from_keys_create"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="createWalletFromKeys"
+        android:text="Create"
+        android:textAlignment="textStart"
+        android:theme="@style/Button.Off"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/text_secret_spend"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_secret_spend"
+        app:layout_constraintTop_toBottomOf="@+id/text_restore_height_keys"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

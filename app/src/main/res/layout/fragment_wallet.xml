@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_wallet">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_wallet_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="button_create_wallet,button_from_keys,button_from_seed" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_wallet_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="rv_wallet_info_list,button_set_address_index,button_show_secret_info,button_delete_wallet" />
+
+        <include
+            android:id="@+id/rv_wallet_info_list"
+            layout="@layout/layout_wallet_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/button_show_secret_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp" />
+
+        <include
+            android:id="@+id/layout_seed_input"
+            layout="@layout/layout_seed_input"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/button_create_wallet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/layout_keys_input"
+            layout="@layout/layout_keys_input"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/button_create_wallet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <NumberPicker
+            android:id="@+id/numberpicker_main_picker"
+            style="@android:style/Widget.Material.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_address_ok"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:theme="@style/Button.On"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_main_picker"
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_main_picker"
+            app:layout_constraintTop_toBottomOf="@+id/numberpicker_main_picker" />
+
+        <TextView
+            android:id="@+id/text_address_index_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners"
+            android:padding="8dp"
+            android:text="Choose a new address index"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/numberpicker_main_picker"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_main_picker"
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_main_picker"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_confirm_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Confirm Delete Wallet"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.Warning"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/text_wallet_password"
+            app:layout_constraintStart_toStartOf="@+id/text_wallet_password"
+            app:layout_constraintTop_toBottomOf="@+id/text_wallet_password" />
+
+        <Button
+            android:id="@+id/button_confirm_show_secret_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Confirm Show Secret Info"
+            android:theme="@style/Button.On"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/text_wallet_password"
+            app:layout_constraintStart_toStartOf="@+id/text_wallet_password"
+            app:layout_constraintTop_toBottomOf="@+id/text_wallet_password" />
+
+        <Button
+            android:id="@+id/button_confirm_new_wallet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.On"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/text_wallet_password_confirm"
+            app:layout_constraintStart_toStartOf="@+id/text_wallet_password_confirm"
+            app:layout_constraintTop_toBottomOf="@+id/text_wallet_password_confirm" />
+
+        <EditText
+            android:id="@+id/text_wallet_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_wallet_password_info" />
+
+        <EditText
+            android:id="@+id/text_wallet_password_confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/text_wallet_password"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/text_wallet_password"
+            app:layout_constraintTop_toBottomOf="@+id/text_wallet_password" />
+
+        <TextView
+            android:id="@+id/text_wallet_password_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="This password is used to secure your wallet on this device only."
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_set_address_index"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="setAddressIndex"
+            android:text="Set Address Index"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.On"
+            app:layout_constraintBottom_toTopOf="@+id/button_delete_wallet"
+            app:layout_constraintEnd_toEndOf="@+id/button_show_secret_info"
+            app:layout_constraintStart_toStartOf="@+id/button_show_secret_info"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp" />
+
+        <Button
+            android:id="@+id/button_delete_wallet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:onClick="removeWallet"
+            android:text="Delete Wallet"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.Warning"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/button_set_address_index"
+            app:layout_constraintStart_toStartOf="@+id/button_set_address_index"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp" />
+
+        <Button
+            android:id="@+id/button_show_secret_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="showSecretInfo"
+            android:text="Show Secret Info"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.On"
+            app:layout_constraintBottom_toTopOf="@+id/button_set_address_index"
+            app:layout_constraintEnd_toEndOf="@+id/rv_wallet_info_list"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/rv_wallet_info_list"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp" />
+
+        <Button
+            android:id="@+id/button_create_wallet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="createWallet"
+            android:text="Create New"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.Off"
+            app:layout_constraintBottom_toTopOf="@+id/button_from_seed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp" />
+
+        <Button
+            android:id="@+id/button_from_keys"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:onClick="showKeysLayout"
+            android:text="From Keys"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.Off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/button_from_seed"
+            app:layout_constraintStart_toStartOf="@+id/button_from_seed"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp" />
+
+        <Button
+            android:id="@+id/button_from_seed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="showSeedLayout"
+            android:text="From Seed"
+            android:textAlignment="textStart"
+            android:theme="@style/Button.Off"
+            app:layout_constraintBottom_toTopOf="@+id/button_from_keys"
+            app:layout_constraintEnd_toEndOf="@+id/button_create_wallet"
+            app:layout_constraintStart_toStartOf="@+id/button_create_wallet"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
