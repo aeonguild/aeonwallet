@@ -16,7 +16,7 @@ Find the apk files in https://github.com/ivoryguru/aeonwallet/tree/main/app/rele
 
 ## Build instructions.
 
-Android apps are written in Java. Aeon source code is in C++. So in order to make this work we have to compile the necesarry source code into C++ libraries we can interface using Java Native Interface.
+Android apps are written in Java. Aeon source code is in C++. So in order to make this work we have to compile the necessary source code into C++ libraries we can interface using Java Native Interface.
 
 Some minor changes to aeon source code are necessary before compiling. Please see the changes https://github.com/ivoryguru/aeon/commits/master.
 
