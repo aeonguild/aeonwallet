@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="screenshot.jpg" width="200" title="hover text">
+</p>
+
 # BETA TESTING
 
 Please use this with caution. All software and code on this repository is provided without warranty, as-is. You risk losing all aeon.
