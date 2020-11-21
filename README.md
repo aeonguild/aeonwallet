@@ -1,6 +1,6 @@
 # BETA TESTING
 
-Please use this with caution. All software on this repository is provided without warranty, as-is. You risk losing all aeon.
+Please use this with caution. All software and code on this repository is provided without warranty, as-is. You risk losing all aeon.
 
 # aeonwallet
 
