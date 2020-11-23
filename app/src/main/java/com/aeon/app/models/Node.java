@@ -19,14 +19,15 @@ public class Node {
 
     static {
         nodes = new ArrayList<>();
-        //nodes.add(new Node("5.45.108.241","32405"));
         nodes.add(new Node("144.76.113.157"));
         nodes.add(new Node("95.111.247.164"));
         nodes.add(new Node("95.216.145.71"));
+        nodes.add(new Node("3.14.4.25"));
         //nodes.add(new Node("144.76.113.157"));
         //nodes.add(new Node("194.116.45.216"));
-        nodes.add(new Node("3.14.4.25"));
+        //nodes.add(new Node("5.45.108.241","32405"));
     }
+
     public Node(String hostAddress){
         this(hostAddress,"11181");
     }
@@ -36,8 +37,7 @@ public class Node {
         this.hostPort = port;
     }
 
-    public static Node
-    pickRandom(){
+    public static Node pickRandom(){
         Node newNode  = nodes.get(new Random().nextInt(nodes.size()));
         return new Node(newNode.hostAddress, newNode.hostPort);
     }

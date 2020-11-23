@@ -15,7 +15,7 @@
         android:textAllCaps="false"
         android:layout_marginBottom="8dp"
         android:onClick="goToNodeFragment"
-        android:text="Node"
+        android:text="@string/title_node"
         android:theme="@style/Button.On"
         app:icon="@drawable/ic_node"
         app:layout_constraintBottom_toBottomOf="parent"

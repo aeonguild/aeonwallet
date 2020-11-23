@@ -36,40 +36,7 @@ public class ButtonActions extends AppCompatActivity {
             .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
             .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
     .build();
-
-    public void showKeyboard(){
-        InputMethodManager imm =
-                (InputMethodManager) this.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(this.getCurrentFocus(), 0);
-    }
-    public void hideKeyboard(){
-        InputMethodManager imm =
-                (InputMethodManager) this.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
-    }
-    public void goToWalletFragment(View view){
-        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.navigation_wallet,null,navOptions);
-    }
-
-    public void goToTransferFragment(View view){
-        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.navigation_transfer,null,navOptions);
-    }
-
-    public void goToRecentFragment(View view){
-        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.navigation_recent,null,navOptions);
-    }
-
-    public void goToContactFragment(View view){
-        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.navigation_contact,null,navOptions);
-    }
-
-    public void goToNodeFragment(View view){
-        Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.navigation_node,null,navOptions);
-    }
-
-    public void goToNewWalletFragment(View view){
-        Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.navigation_new_wallet,null,navOptions);
-    }
+    public static String password;
 
     public void createWallet(View v) {
         if (thread == null || !thread.isRunning) {
@@ -77,7 +44,7 @@ public class ButtonActions extends AppCompatActivity {
             EditText password = findViewById(R.id.text_wallet_password);
             EditText passwordConfirm = findViewById(R.id.text_wallet_password_confirm);
             Button confirm = findViewById(R.id.button_confirm_new_wallet);
-            View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
+            View walletFragmentLayout = findViewById(R.id.layout_wallet);
             WalletFragment.hideUI(walletFragmentLayout);
             passwordInfo.setVisibility(View.VISIBLE);
             password.setVisibility(View.VISIBLE);
@@ -94,9 +61,9 @@ public class ButtonActions extends AppCompatActivity {
                         thread = new BackgroundThread();
                         thread.start();
                         WalletContent.clearItems();
-                        WalletContent.addItem(new WalletContent.Item("", "Loading Wallet ..."));
+                        WalletContent.addItem(new WalletContent.Item("", getResources().getString(R.string.text_loading_wallet)));
                         BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis());
-                        View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
+                        View walletFragmentLayout = findViewById(R.id.layout_wallet);
                         WalletFragment.openWalletView(walletFragmentLayout);
                         ConstraintLayout layout = findViewById(R.id.layout_seed_input);
                         layout.setVisibility(View.GONE);
@@ -131,7 +98,7 @@ public class ButtonActions extends AppCompatActivity {
                 EditText password = findViewById(R.id.text_wallet_password);
                 EditText passwordConfirm = findViewById(R.id.text_wallet_password_confirm);
                 Button confirm = findViewById(R.id.button_confirm_new_wallet);
-                View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
+                View walletFragmentLayout = findViewById(R.id.layout_wallet);
                 WalletFragment.hideUI(walletFragmentLayout);
                 passwordInfo.setVisibility(View.VISIBLE);
                 password.setVisibility(View.VISIBLE);
@@ -148,7 +115,7 @@ public class ButtonActions extends AppCompatActivity {
                             thread = new BackgroundThread();
                             thread.start();
                             WalletContent.clearItems();
-                            WalletContent.addItem(new WalletContent.Item("", "Loading Wallet ..."));
+                            WalletContent.addItem(new WalletContent.Item("", getResources().getString(R.string.text_loading_wallet)));
                             BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis(), seed, restoreHeight);
                             View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
                             WalletFragment.openWalletView(walletFragmentLayout);
@@ -156,6 +123,7 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
+                            goToNewWalletFragment(v);
                         } else {
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
@@ -209,7 +177,7 @@ public class ButtonActions extends AppCompatActivity {
                             thread = new BackgroundThread();
                             thread.start();
                             WalletContent.clearItems();
-                            WalletContent.addItem(new WalletContent.Item("", "Loading Wallet ..."));
+                            WalletContent.addItem(new WalletContent.Item("", getResources().getString(R.string.text_loading_wallet)));
                             BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis(), account,view,spend, restoreHeight);
                             View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
                             WalletFragment.openWalletView(walletFragmentLayout);
@@ -217,6 +185,7 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
+                            goToNewWalletFragment(v);
                         } else {
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
@@ -465,11 +434,86 @@ public class ButtonActions extends AppCompatActivity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("password",password);
-        editor.commit();
+        ButtonActions.password = password;
+        editor.apply();
     }
-    public String getPassword(){
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String password = sharedPref.getString("password" , null);
+    public static String getPassword(){
         return password;
     }
+    public void showKeyboard(){
+        InputMethodManager imm =
+                (InputMethodManager) this.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(this.getCurrentFocus(), 0);
+    }
+    public void hideKeyboard(){
+        InputMethodManager imm =
+                (InputMethodManager) this.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+    }
+    public void goToWalletFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_wallet,
+                null,
+                navOptions
+        );
+    }
+
+    public void goToTransferFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_transfer,
+                null,
+                navOptions
+        );
+    }
+
+    public void goToRecentFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_recent,
+                null,
+                navOptions
+        );
+    }
+
+    public void goToContactFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_contact,
+                null,
+                navOptions
+        );
+    }
+
+    public void goToNodeFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_node,
+                null,
+                navOptions
+        );
+    }
+
+    public void goToNewWalletFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_new_wallet,
+                null,
+                navOptions
+        );
+    }
+
 }

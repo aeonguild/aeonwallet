@@ -31,8 +31,8 @@ public class Wallet {
     public Node node;
     public TransactionHistory transactionHistory;
     public ArrayList<TransactionInfo> transactions = new ArrayList<>();
-    public boolean isExists = false;
-    public boolean isSynchronized = false;
+    public boolean isExists;
+    public boolean isSynchronized;
     public boolean isInit;
     public boolean isClosed;
 

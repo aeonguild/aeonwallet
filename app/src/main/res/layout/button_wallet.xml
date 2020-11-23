@@ -16,7 +16,7 @@
         android:layout_marginBottom="8dp"
         android:textAllCaps="false"
         android:onClick="goToWalletFragment"
-        android:text="Wallet"
+        android:text="@string/title_wallet"
         android:theme="@style/Button.On"
         app:icon="@drawable/ic_wallet"
         app:layout_constraintBottom_toBottomOf="parent"

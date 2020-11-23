@@ -2,6 +2,7 @@ package com.aeon.app;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,8 @@ public class MainActivity extends ButtonActions {
     public static ImageView image_transfer;
     public static ImageView image_recents;
     public static ImageView image_contacts;
+    public static Resources res;
+    public static String packageName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class MainActivity extends ButtonActions {
         image_transfer = findViewById(R.id.image_transfer);
         image_recents = findViewById(R.id.image_recents);
         image_contacts = findViewById(R.id.image_contacts);
+        res = getResources();
+        packageName = getPackageName();
 
         loadContacts();
         loadSavedWallet();
@@ -111,11 +116,15 @@ public class MainActivity extends ButtonActions {
     private void loadSavedWallet(){
         SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         String path = sharedPref.getString("path" , null);
+        this.password = sharedPref.getString("password" , null);
         if(!BackgroundThread.isManaging && path != null){
             thread = new BackgroundThread();
             thread.start();
             WalletContent.clearItems();
-            WalletContent.addItem(new WalletContent.Item("", "Loading Wallet ..."));
+            WalletContent.addItem(
+                    new WalletContent.Item("",
+                    getResources().getString(R.string.text_loading_wallet))
+            );
             BackgroundThread.queueWallet(path);
         }
     }
@@ -144,5 +153,10 @@ public class MainActivity extends ButtonActions {
             editor.putString(c.address, c.name);
         }
         editor.commit();
+    }
+
+    public static String getString(String idName) {
+        int resId = res.getIdentifier(idName, "string", packageName);
+        return res.getString(resId);
     }
 }

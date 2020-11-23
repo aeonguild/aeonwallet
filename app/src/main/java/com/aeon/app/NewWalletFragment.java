@@ -65,7 +65,7 @@ public class NewWalletFragment extends Fragment {
     }
     @Override
     public void onStop() {
-        super.onResume();
+        super.onStop();
         text_seed_phrase.setText("");
         BackgroundThread.isShownNewWalletFragment = true;
         understood.setVisibility(View.GONE);
