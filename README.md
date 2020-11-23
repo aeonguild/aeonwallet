@@ -1,5 +1,7 @@
 <p align="center">
+  <img src="screenshot3.jpg" width="200" title="hover text">
   <img src="screenshot.jpg" width="200" title="hover text">
+  <img src="screenshot2.jpg" width="200" title="hover text">
 </p>
 
 # BETA TESTING
