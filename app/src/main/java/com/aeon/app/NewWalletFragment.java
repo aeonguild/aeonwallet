@@ -11,10 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class NewWalletFragment extends Fragment {
-    private TextView text_seed_phrase;
+    private EditText text_seed_phrase;
     private Button understood;
     public NewWalletFragment() {
         // Required empty public constructor
