@@ -8,7 +8,7 @@ An original android wallet app built for Aeon. Connect to a node, load your wall
 
 ## What is Aeon?
 
-Aeon is a cryptocurrency based on the Cryptonote Protocol. It is intended to be a minimal version creating less encryption bloat and using a faster hashing algorithm KangarooTwelve while maintining the same private transactions and balances. Find more information https://github.com/aeonix/aeon.
+Aeon is a cryptocurrency based on the Cryptonote Protocol. It is intended to be a minimal implementation with a goal of less encryption bloat and faster hashing algorithms ([KangarooTwelve](https://keccak.team/kangarootwelve.html)) while maintining the same private transactions and balances. Find more information https://github.com/aeonix/aeon.
 
 ## Download.
 
