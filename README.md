@@ -6,7 +6,7 @@
 
 An original android wallet app built for Aeon.
 
-## What is Aeon
+## What is Aeon?
 
 Aeon is a cryptocurrency based on the Cryptonote Protocol. It is intended to be a minimal version creating less encryption bloat and using a faster hashing algorithm KangarooTwelve while maintining the same private transactions and balances. Find more information https://github.com/aeonix/aeon.
 
@@ -25,9 +25,10 @@ Next, change directory to `external-libs` and run `sudo make install`. This will
 After this is all completed, you will be able to open the app in Android Studio and build.
 
 
-## Thanks
+## Thanks.
 
-Cheers to m2049r for the exemplary app xmrwallet and build scripts. https://github.com/m2049r/xmrwallet
+Cheers to m2049r for the exemplary app xmrwallet and build scripts. https://github.com/m2049r/xmrwallet 
+Also thanks to members of the Aeon community for their continued effort in realizing an ideal cryptocurrency.
 
 ## License
 
