@@ -27,7 +27,7 @@ After this is all completed, you will be able to open the app in Android Studio 
 
 ## Thanks.
 
-Cheers to m2049r for the exemplary app xmrwallet and build scripts. https://github.com/m2049r/xmrwallet 
+Cheers to m2049r for the exemplary app xmrwallet and build scripts. https://github.com/m2049r/xmrwallet.
 Also thanks to members of the Aeon community for their continued effort in realizing an ideal cryptocurrency.
 
 ## License
