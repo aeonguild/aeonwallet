@@ -34,4 +34,9 @@
         android:name="com.aeon.app.NewWalletFragment"
         android:label="New Wallet"
         tools:layout="@layout/fragment_new_wallet" />
+    <fragment
+        android:id="@+id/navigation_transaction_pending"
+        android:name="com.aeon.app.TransactionPendingFragment"
+        android:label="Pending Transaction"
+        tools:layout="@layout/fragment_transaction_pending" />
 </navigation>

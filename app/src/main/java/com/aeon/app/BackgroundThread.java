@@ -10,18 +10,17 @@ import com.aeon.app.ui.node.NodeContent;
 import com.aeon.app.ui.recent.RecentContent;
 import com.aeon.app.ui.wallet.WalletContent;
 
-import java.util.ArrayList;
-
 public class BackgroundThread extends Thread{
     private static final String TAG = "BackgroundThread";
     private static Node node;
     private static Wallet wallet = null;
     private static int sleepTimer;
-    private static ArrayList<TransactionPending> pendingOutTransactions = new ArrayList<TransactionPending>();
     private static boolean isNodeChanged;
     public static boolean isRunning = false;
     public static boolean isManaging = false;
+    public static boolean isConnected = false;
     public static boolean isShownNewWalletFragment = false;
+    public static TransactionPending pendingTransaction = null;
     public static String path = null;
     public static String seed = null;
 
@@ -64,8 +63,9 @@ public class BackgroundThread extends Thread{
         Log.v(TAG, "Thread.interrupted()");
         wallet.close();
         isManaging = false;
-        isShownNewWalletFragment=false;
         isRunning = false;
+        isConnected=false;
+        isShownNewWalletFragment=false;
         Log.v(TAG, "!isManaging");
         WalletContent.clearItems();
         sleepTimer = 200;
@@ -100,7 +100,11 @@ public class BackgroundThread extends Thread{
 
     public static void queueTransaction(String dst_address, long amount){
         Log.v(TAG, "queueTransaction");
-        pendingOutTransactions.add(new TransactionPending(dst_address,amount));
+        pendingTransaction = new TransactionPending(dst_address,amount);
+    }
+    public static void confirmTransaction(){
+        Log.v(TAG, "confirmTransaction");
+        pendingTransaction.isConfirmedByUser = true;
     }
 
     public static void setAddressIndex(int index){
@@ -117,25 +121,25 @@ public class BackgroundThread extends Thread{
 
     private void clearTransactionQueue(){
         Log.v(TAG, "clearTransactionQueue");
-        ArrayList<TransactionPending> clone = new ArrayList<>();
-        clone.addAll(pendingOutTransactions);
-        for(TransactionPending tx : clone){
-            if(!tx.isCommitted && !tx.isAttempted){
-                tx.setHandle(wallet.createTransaction(tx));
-                tx.commit();
-            } else {
-                tx.refresh();
-                switch(tx.status){
-                    case Ok:
-                    case Error:
-                    case Critical:
-                        wallet.disposeTransaction(tx);
-                        pendingOutTransactions.remove(tx);
-                        break;
-                    default:
-
-                }
+        if(pendingTransaction == null){
+            return;
+        } else if(!pendingTransaction.isCreated){
+            pendingTransaction.setHandle(wallet.createTransaction(pendingTransaction));
+            pendingTransaction.isCreated = true;
+        } else if(pendingTransaction.isConfirmedByUser) {
+            pendingTransaction.commit();
+            pendingTransaction.refresh();
+            switch (pendingTransaction.status) {
+                case Ok:
+                case Error:
+                case Critical:
+                    wallet.disposeTransaction(pendingTransaction);
+                    pendingTransaction = null;
+                    break;
+                default:
             }
+        } else {
+            pendingTransaction.refresh();
         }
     }
 
@@ -202,8 +206,11 @@ public class BackgroundThread extends Thread{
         NodeContent.updateItem(MainActivity.getString("row_node_status"),String.valueOf(wallet.connectionStatus));
         NodeContent.updateItem(MainActivity.getString("row_node_version"),String.valueOf(wallet.node.version));
         if(isNodeChanged){
+            isConnected = false;
             wallet.setNode(BackgroundThread.node);
             NodeContent.updateItem(MainActivity.getString("row_node_address"), BackgroundThread.node.hostAddress+":"+ BackgroundThread.node.hostPort);
+        } else if (wallet.connectionStatus == Wallet.ConnectionStatus.Connected){
+            isConnected = true;
         }
     }
 }

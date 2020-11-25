@@ -57,8 +57,8 @@
     <string name="text_new_address">Choose a new address index</string>
     <string name="text_open_a_wallet_to_begin">Open a wallet to begin!</string>
     <string name="text_password">Password</string>
-    <string name="text_password_description">This password is used to secure your wallet on this
-        device only.</string>
+    <string name="text_password_description">This password is used to secure your wallet only on this
+        device.</string>
     <string name="text_recipient_address">Recipient Address</string>
     <string name="text_restore_height">Restore Height</string>
     <string name="text_secret_view_key">Secret View Key</string>
@@ -66,21 +66,11 @@
     <string name="text_seed_description">Every aeon wallet has a unique and secret seed
         phrase.</string>
     <string name="text_seed_here">YOUR SEED HERE</string>
-    <string name="text_seed_reminder">Remember, all of the information about aeon transactions,
-        wallets, and balances is securely encrypted on the blockchain. Your private keys are used
-        to prove you own the encrypted data on the aeon blockchain. Without a seed or private key,
-        the information is encrypted forever!</string>
     <string name="text_seed_reminder_2">After you delete your wallet or uninstall this app,
         your seed phrase can be still used to access your wallet with any other aeon wallet
-        software.</string>
-    <string name="text_terms_of_use">Please recall the terms of this wallet software license:
-        Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor
-        provides the Work (and each Contributor provides its Contributions) on an AS IS BASIS,
-        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without
-        limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or
-        FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the
-        appropriateness of using or redistributing the Work and assume any risks associated
-        with Your exercise of permissions under this License.</string>
+        software. Copy this down.</string>
     <string name="text_seed">Seed</string>
     <string name="text_loading_wallet">Loading Wallet...</string>
+    <string name="title_transaction_pending">Pending Transaction</string>
+    <string name="text_creating_transaction">Creating Transaction...</string>
 </resources>

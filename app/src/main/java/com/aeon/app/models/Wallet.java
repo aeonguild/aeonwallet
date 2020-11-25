@@ -42,7 +42,7 @@ public class Wallet {
         Error,
         Critical
     }
-    enum ConnectionStatus {
+    public enum ConnectionStatus {
         Disconnected,
         Connected,
         WrongVersion

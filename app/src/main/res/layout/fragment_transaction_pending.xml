@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_new_wallet">
+
+        <TextView
+            android:id="@+id/text_transfer_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/corners"
+            android:editable="true"
+            android:fontFamily="monospace"
+            android:padding="8dp"
+            android:selectAllOnFocus="true"
+            android:text="@string/text_creating_transaction"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/text_transfer_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:hint="@string/text_password"
+            android:inputType="textPassword"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_transfer_info" />
+
+        <Button
+            android:id="@+id/button_confirm_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="confirmTransaction"
+            android:text="@string/button_confirm"
+            android:textAlignment="viewStart"
+            android:theme="@style/Button.On"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/text_transfer_password"
+            app:layout_constraintStart_toStartOf="@+id/text_transfer_password"
+            app:layout_constraintTop_toBottomOf="@+id/text_transfer_password" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

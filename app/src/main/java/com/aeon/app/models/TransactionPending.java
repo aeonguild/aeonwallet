@@ -8,8 +8,10 @@ public class TransactionPending {
     }
     private static final String TAG = "Pending";
     private long handle;
-    public boolean isCommitted = false;
-    public boolean isAttempted = false;
+    public boolean isCommitted;
+    public boolean isConfirmedByUser;
+    public boolean isCreated;
+    public boolean isAttempted;
     public String recipient;
     public long amount;
     public long fee;
@@ -30,12 +32,18 @@ public class TransactionPending {
     }
     public TransactionPending(String recipient, long amount){
         Log.v(TAG, "Pending");
+        isCommitted = false;
+        isConfirmedByUser = false;
+        isAttempted = false;
+        isCreated = false;
         this.recipient = recipient;
         this.amount = amount;
+        this.fee = fee;
     }
     public void setHandle(long handle){
         Log.v(TAG, "setHandle");
         this.handle = handle;
+        refresh();
     }
     public void refresh(){
         Log.v(TAG, "refresh");

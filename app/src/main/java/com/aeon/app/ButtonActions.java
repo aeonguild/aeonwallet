@@ -60,6 +60,7 @@ public class ButtonActions extends AppCompatActivity {
                         setPassword(password.getText().toString());
                         thread = new BackgroundThread();
                         thread.start();
+                        goToNewWalletFragment(v);
                         WalletContent.clearItems();
                         WalletContent.addItem(new WalletContent.Item("", getResources().getString(R.string.text_loading_wallet)));
                         BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis());
@@ -69,7 +70,6 @@ public class ButtonActions extends AppCompatActivity {
                         layout.setVisibility(View.GONE);
                         layout = findViewById(R.id.layout_keys_input);
                         layout.setVisibility(View.GONE);
-                        goToNewWalletFragment(v);
                     } else {
                         WalletFragment.closeWalletView(walletFragmentLayout);
                     }
@@ -123,7 +123,6 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
-                            goToNewWalletFragment(v);
                         } else {
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
@@ -185,7 +184,6 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
-                            goToNewWalletFragment(v);
                         } else {
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
@@ -254,35 +252,24 @@ public class ButtonActions extends AppCompatActivity {
         showKeyboard();
     }
     public void createTransaction(View v) {
-        EditText password = findViewById(R.id.text_transfer_password);
-        Button confirm = findViewById(R.id.button_confirm_send);
         View transferFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_transfer);
         EditText recipientInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_recipient_info);
         EditText amountInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_amount_info);
-        TransferFragment.hideUI(transferFragmentLayout);
-        password.setVisibility(View.VISIBLE);
-        confirm.setVisibility(View.VISIBLE);
-        password.requestFocus();
-        showKeyboard();
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(password.getText().toString().equals(getPassword())
-                    && !amountInfo.getText().toString().equals("")
-                    && !recipientInfo.getText().toString().equals("")){
-                    BackgroundThread.queueTransaction(
-                            recipientInfo.getText().toString(),(new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
-                    );
-                }
-                hideKeyboard();
-                recipientInfo.setText("");
-                amountInfo.setText("");
-                password.setText("");
-                password.setVisibility(View.GONE);
-                confirm.setVisibility(View.GONE);
-                TransferFragment.showUI(transferFragmentLayout);
-            }
-        });
+        BackgroundThread.queueTransaction(
+                recipientInfo.getText().toString(),(new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
+        );
+        goToTransactionPendingFragment(v);
+    }
+
+    public void confirmTransaction(View v) {
+        EditText password = findViewById(R.id.text_transfer_password);
+        Button confirm = findViewById(R.id.button_confirm_send);
+        if(password.getText().toString().equals(getPassword())){
+            BackgroundThread.confirmTransaction();
+        }
+        password.setText("");
+        confirm.setVisibility(View.GONE);
+        goToTransferFragment(v);
     }
 
     public void removeWallet(View v) {
@@ -511,6 +498,16 @@ public class ButtonActions extends AppCompatActivity {
                 R.id.nav_host_fragment
         ).navigate(
                 R.id.navigation_new_wallet,
+                null,
+                navOptions
+        );
+    }
+    public void goToTransactionPendingFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_transaction_pending,
                 null,
                 navOptions
         );

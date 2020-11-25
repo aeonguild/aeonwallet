@@ -22,6 +22,12 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorOnSecondary">@color/white</item>
     </style>
+    <style name="Button.Top" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">@color/teal_500</item>
+        <item name="colorSecondary">@color/teal_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+    </style>
 
     <style name="Button.Off" parent="Theme.MaterialComponents">
         <item name="colorPrimary">@color/dark_gray</item>
@@ -37,8 +43,8 @@
     </style>
 
     <style name="Button.Warning" parent="Theme.MaterialComponents">
-        <item name="colorPrimary">@color/design_default_color_error</item>
-        <item name="colorSecondary">@color/design_default_color_error</item>
+        <item name="colorPrimary">#800017</item>
+        <item name="colorSecondary">#800017</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorOnSecondary">@color/white</item>
     </style>
