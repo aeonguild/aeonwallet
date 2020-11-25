@@ -6,6 +6,10 @@
 
 An original android wallet app built for Aeon.
 
+## What is Aeon
+
+Aeon is a cryptocurrency based on the Cryptonote Protocol. It is intended to be a minimal version creating less encryption bloat and using a faster hashing algorithm KangarooTwelve while maintining the same private transactions and balances. Find more information https://github.com/aeonix/aeon.
+
 ## Download.
 
 Find the apk files in https://github.com/ivoryguru/aeonwallet/tree/main/app/release. Most android phones will use the `app-arm64-v8a-release.apk`.
@@ -19,6 +23,7 @@ Build scripts require `ndk-r15c` in `/opt/android/`. See `env.sh`. https://devel
 Next, change directory to `external-libs` and run `sudo make install`. This will create the necessary lib files for the app.
 
 After this is all completed, you will be able to open the app in Android Studio and build.
+
 
 ## Thanks
 
