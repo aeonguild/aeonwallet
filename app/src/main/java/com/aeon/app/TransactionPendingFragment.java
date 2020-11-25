@@ -16,11 +16,9 @@ import androidx.fragment.app.Fragment;
 import java.math.BigDecimal;
 
 public class TransactionPendingFragment extends Fragment {
-    private EditText text_transfer_password;
     private TextView text_transfer_info;
     private Button understood;
     public TransactionPendingFragment() {
-        // Required empty public constructor
     }
 
 
