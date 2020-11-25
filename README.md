@@ -2,10 +2,6 @@
   <img src="Screenshot_20201125-085106_Aeon_Wallet[1].jpg" width="250" title="hover text">
 </p>
 
-# BETA TESTING
-
-Please use this with caution. All software and code on this repository is provided without warranty, as-is. You risk losing all aeon.
-
 # aeonwallet
 
 An original android wallet app built for Aeon.
@@ -28,3 +24,18 @@ After this is all completed, you will be able to open the app in Android Studio 
 
 Cheers to m2049r for the exemplary app xmrwallet and build scripts. https://github.com/m2049r/xmrwallet
 
+## License
+
+Copyright 2020 ivoryguru
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
