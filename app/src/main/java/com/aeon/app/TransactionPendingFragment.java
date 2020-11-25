@@ -41,7 +41,7 @@ public class TransactionPendingFragment extends Fragment {
             public void run() {
                 while (BackgroundThread.pendingTransaction.fee==0) {
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

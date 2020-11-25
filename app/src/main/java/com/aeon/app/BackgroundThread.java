@@ -12,9 +12,9 @@ import com.aeon.app.ui.wallet.WalletContent;
 
 public class BackgroundThread extends Thread{
     private static final String TAG = "BackgroundThread";
+    private int sleepCount = 0;
     private static Node node;
     private static Wallet wallet = null;
-    private static int sleepTimer;
     private static boolean isNodeChanged;
     public static boolean isRunning = false;
     public static boolean isManaging = false;
@@ -23,7 +23,6 @@ public class BackgroundThread extends Thread{
     public static TransactionPending pendingTransaction = null;
     public static String path = null;
     public static String seed = null;
-
     public BackgroundThread() {
 
     }
@@ -45,16 +44,21 @@ public class BackgroundThread extends Thread{
                     init();
                 } else {
                     Log.v(TAG, "wallet.isExists && wallet.isInit");
-                    sleepTimer=10000;
-                    updateTransactions();
-                    refreshWalletInfo();
-                    refreshNode();
+                    if(sleepCount==300){
+                        sleepCount = 0;
+                        updateTransactions();
+                    }
+                    if(sleepCount%100==0) {
+                        refreshWalletInfo();
+                        refreshNode();
+                    }
                     clearTransactionQueue();
                 }
             }
             try {
                 Log.v(TAG, "Thread.sleep");
-                Thread.sleep(sleepTimer);
+                Thread.sleep(100);
+                sleepCount++;
             } catch (InterruptedException e) {
                 this.interrupt();
                 e.printStackTrace();
@@ -68,7 +72,6 @@ public class BackgroundThread extends Thread{
         isShownNewWalletFragment=false;
         Log.v(TAG, "!isManaging");
         WalletContent.clearItems();
-        sleepTimer = 200;
         Log.v(TAG, "!isRunning");
     }
 
@@ -78,7 +81,6 @@ public class BackgroundThread extends Thread{
         BackgroundThread.seed = null;
         wallet = new Wallet(path,MainActivity.getPassword(),"English");
         isManaging = true;
-        sleepTimer = 200;
     }
     public static void queueWallet(String path, String seed, int restoreHeight){
         Log.v(TAG, "queueWallet");
@@ -86,7 +88,6 @@ public class BackgroundThread extends Thread{
         BackgroundThread.seed = null;
         wallet = new Wallet(path,MainActivity.getPassword(),"English", seed, restoreHeight);
         isManaging = true;
-        sleepTimer = 200;
     }
 
     public static void queueWallet(String path, String account, String view, String spend, int restoreHeight) {
@@ -95,7 +96,6 @@ public class BackgroundThread extends Thread{
         BackgroundThread.seed = null;
         wallet = new Wallet(path,MainActivity.getPassword(),"English", account, view, spend, restoreHeight);
         isManaging = true;
-        sleepTimer = 200;
     }
 
     public static void queueTransaction(String dst_address, long amount){
