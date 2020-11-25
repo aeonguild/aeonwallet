@@ -18,6 +18,8 @@ Find the apk files in https://github.com/ivoryguru/aeonwallet/tree/main/app/rele
 
 Some minor changes to aeon source code are necessary before compiling. Please see the changes https://github.com/ivoryguru/aeon/commits/master.
 
+Build scripts require `ndk-r15c` in `/opt/android/`. See `env.sh`. https://developer.android.com/ndk/downloads/older_releases
+
 Next, change directory to `external-libs` and run `sudo make install`. This will create the necessary lib files for the app.
 
 After this is all completed, you will be able to open the app in Android Studio and build.
