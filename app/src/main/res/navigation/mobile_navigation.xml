@@ -7,36 +7,36 @@
     <fragment
         android:id="@+id/navigation_transfer"
         android:name="com.aeon.app.ui.transfer.TransferFragment"
-        android:label="Transfer"
+        android:label="@string/title_transfer"
         tools:layout="@layout/fragment_transfer" />
     <fragment
         android:id="@+id/navigation_recent"
         android:name="com.aeon.app.ui.recent.RecentFragment"
-        android:label="Recents"
+        android:label="@string/title_recents"
         tools:layout="@layout/layout_recent_list" />
     <fragment
         android:id="@+id/navigation_contact"
         android:name="com.aeon.app.ui.contact.ContactFragment"
-        android:label="Contacts"
+        android:label="@string/title_contacts"
         tools:layout="@layout/fragment_contact" />
     <fragment
         android:id="@+id/navigation_wallet"
         android:name="com.aeon.app.ui.wallet.WalletFragment"
-        android:label="Wallet"
+        android:label="@string/title_wallet"
         tools:layout="@layout/fragment_wallet" />
     <fragment
         android:id="@+id/navigation_node"
         android:name="com.aeon.app.ui.node.NodeFragment"
-        android:label="Node"
+        android:label="@string/title_node"
         tools:layout="@layout/fragment_node" />
     <fragment
         android:id="@+id/navigation_new_wallet"
         android:name="com.aeon.app.NewWalletFragment"
-        android:label="New Wallet"
+        android:label="@string/title_new_wallet"
         tools:layout="@layout/fragment_new_wallet" />
     <fragment
         android:id="@+id/navigation_transaction_pending"
         android:name="com.aeon.app.TransactionPendingFragment"
-        android:label="Pending Transaction"
+        android:label="@string/title_transaction_pending"
         tools:layout="@layout/fragment_transaction_pending" />
 </navigation>

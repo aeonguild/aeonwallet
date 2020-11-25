@@ -44,6 +44,7 @@
     <string name="title_recents">Recents</string>
     <string name="title_send_aeon">Send Aeon</string>
     <string name="title_terms_of_use">Terms Of Use</string>
+    <string name="title_transaction_pending">Pending Transaction</string>
     <string name="title_transfer">Transfer</string>
     <string name="title_wallet">Wallet</string>
     <string name="text_unknown">...</string>
@@ -53,7 +54,9 @@
     <string name="text_contact_hint_name">Contact Name</string>
     <string name="text_contact_hint_address">Contact Address</string>
     <string name="text_create">Create</string>
+    <string name="text_creating_transaction">Creating Transaction...</string>
     <string name="text_ip_address">127.0.0.1:11181</string>
+    <string name="text_loading_wallet">Loading Wallet...</string>
     <string name="text_new_address">Choose a new address index</string>
     <string name="text_open_a_wallet_to_begin">Open a wallet to begin!</string>
     <string name="text_password">Password</string>
@@ -69,8 +72,9 @@
     <string name="text_seed_reminder_2">After you delete your wallet or uninstall this app,
         your seed phrase can be still used to access your wallet with any other aeon wallet
         software. Copy this down.</string>
-    <string name="text_seed">Seed</string>
-    <string name="text_loading_wallet">Loading Wallet...</string>
-    <string name="title_transaction_pending">Pending Transaction</string>
-    <string name="text_creating_transaction">Creating Transaction...</string>
+    <string name="text_seed">Mnemonic Seed</string>
+    <string name="text_transaction_aeon"> aeon.</string>
+    <string name="text_transaction_aeon_to"> aeon to </string>
+    <string name="text_transaction_for_a_fee_of"> for a fee of </string>
+    <string name="text_transaction_you_are_sending">You are sending </string>
 </resources>

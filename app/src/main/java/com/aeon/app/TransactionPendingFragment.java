@@ -51,10 +51,13 @@ public class TransactionPendingFragment extends Fragment {
                     @Override
                     public void run() {
                         text_transfer_info.setText(
-                                "You are sending " +BigDecimal.valueOf(BackgroundThread.pendingTransaction.amount).movePointLeft(12).toPlainString()
-                                + " aeon to " + BackgroundThread.pendingTransaction.recipient
-                                + " for a fee of " + BigDecimal.valueOf(BackgroundThread.pendingTransaction.fee).movePointLeft(12).toPlainString()
-                                + " aeon."
+                                MainActivity.getString("text_transaction_you_are_sending") +" "
+                                        +BigDecimal.valueOf(BackgroundThread.pendingTransaction.amount).movePointLeft(12).toPlainString()
+                                        +" "+ MainActivity.getString("text_transaction_aeon_to") +" "
+                                        + BackgroundThread.pendingTransaction.recipient
+                                        +" "+ MainActivity.getString("text_transaction_for_a_fee_of")  +" "
+                                        + BigDecimal.valueOf(BackgroundThread.pendingTransaction.fee).movePointLeft(12).toPlainString()
+                                        +" "+ MainActivity.getString("text_transaction_aeon")
                         );
                         understood.setVisibility(View.VISIBLE);
                     }
