@@ -35,6 +35,7 @@ public class Node {
     static {
         nodes = new ArrayList<>();
         nodes.add(new Node("144.76.113.157"));
+        nodes.add(new Node("142.93.155.14"));
         nodes.add(new Node("95.111.247.164"));
         nodes.add(new Node("95.216.145.71"));
         nodes.add(new Node("3.14.4.25"));
