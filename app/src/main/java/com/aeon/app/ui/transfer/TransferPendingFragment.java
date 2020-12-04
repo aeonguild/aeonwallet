@@ -1,4 +1,4 @@
-package com.aeon.app;
+package com.aeon.app.ui.transfer;
 
 /*
 Copyright 2020 ivoryguru
@@ -28,12 +28,16 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.aeon.app.BackgroundThread;
+import com.aeon.app.MainActivity;
+import com.aeon.app.R;
+
 import java.math.BigDecimal;
 
-public class TransactionPendingFragment extends Fragment {
+public class TransferPendingFragment extends Fragment {
     private TextView text_transfer_info;
     private Button understood;
-    public TransactionPendingFragment() {
+    public TransferPendingFragment() {
     }
 
 

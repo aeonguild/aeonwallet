@@ -1,4 +1,4 @@
-package com.aeon.app;
+package com.aeon.app.ui.wallet;
 
 /*
 Copyright 2020 ivoryguru
@@ -29,10 +29,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class NewWalletFragment extends Fragment {
+import com.aeon.app.BackgroundThread;
+import com.aeon.app.MainActivity;
+import com.aeon.app.R;
+
+public class WalletNewFragment extends Fragment {
     private EditText text_seed_phrase;
     private Button understood;
-    public NewWalletFragment() {
+    public WalletNewFragment() {
         // Required empty public constructor
     }
 
