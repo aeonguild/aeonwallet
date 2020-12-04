@@ -16,7 +16,7 @@ Find the apk files in https://github.com/ivoryguru/aeonwallet/tree/main/app/rele
 
 ## Build instructions.
 
-Some minor changes to aeon source code are necessary before compiling. Please see the changes https://github.com/ivoryguru/aeon/commits/master.
+Some minor changes to aeon source code are necessary before compiling. Please see the changes https://github.com/ivoryguru/aeon/tree/aeonwallet.
 
 Build scripts require `ndk-r15c` in `/opt/android/`. See `env.sh`. https://developer.android.com/ndk/downloads/older_releases
 
