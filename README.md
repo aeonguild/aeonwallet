@@ -4,7 +4,7 @@
 
 # aeonwallet
 
-An original android wallet app built for Aeon. Connect to a node, load your wallet, and send aeon.
+An original android wallet app built for Aeon. Connect to a node, load your wallet, and send aeon. 
 
 ## What is Aeon?
 
@@ -27,7 +27,9 @@ After this is all completed, you will be able to open the app in Android Studio 
 
 ## How To Help.
 
-Please report any issues using the app. Also, help translating and adding reliable nodes is appreciated. 
+Please report any issues using the app. 
+Also, help translating and adding reliable nodes is appreciated. 
+Translations available for 中文 aeon wallet.
 
 ## Thanks.
 
