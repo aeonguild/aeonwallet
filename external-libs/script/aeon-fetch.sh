@@ -9,7 +9,7 @@ source script/env.sh
 cd $EXTERNAL_LIBS_BUILD_ROOT
 
 url="https://github.com/ivoryguru/aeon"
-version="master"
+version="aeonwallet"
 
 if [ ! -d "aeon" ]; then
   git clone ${url} -b ${version}
