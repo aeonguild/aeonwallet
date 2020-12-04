@@ -2,13 +2,17 @@
   <img src="Screenshot_20201125-085106_Aeon_Wallet[1].jpg" width="250" title="hover text">
 </p>
 
-# aeonwallet
+# aeonvault
 
-An original android wallet app built for Aeon. Connect to a node, load your wallet, and send aeon. 
+An original android cold storage app built for Aeon. Connect to a node, load your wallet, and secure your aeon. 
 
 ## What is Aeon?
 
 Aeon is a cryptocurrency based on the Cryptonote Protocol. It is intended to be a minimal implementation with a goal of less encryption bloat and faster hashing algorithms ([KangarooTwelve](https://keccak.team/kangarootwelve.html)) while maintining the same private transactions and balances. Find more information https://github.com/aeonix/aeon.
+
+## What is Cold Storage?
+
+Cold Storage will secure your aeon making it unspendable for a duration of time. Not even you yourself can spend the aeon after it is secured. 
 
 ## Download.
 
@@ -16,7 +20,7 @@ Find the apk files in https://github.com/ivoryguru/aeonwallet/tree/main/app/rele
 
 ## Build instructions.
 
-Some minor changes to aeon source code are necessary before compiling. Please see the changes https://github.com/ivoryguru/aeon/tree/aeonwallet.
+Some minor changes to aeon source code are necessary before compiling. Please see the changes https://github.com/ivoryguru/aeon/tree/unlock_time_api.
 
 Build scripts require `ndk-r15c` in `/opt/android/`. See `env.sh`. https://developer.android.com/ndk/downloads/older_releases
 
