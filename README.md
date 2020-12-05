@@ -5,7 +5,7 @@
 
 # aeonwallet
 
-An original android wallet app built for Aeon. Connect to a node, load your wallet, and send aeon. 
+An original android wallet app built for Aeon. Connect to a node, load your wallet, and send coins. 
 
 ## What is Aeon?
 
