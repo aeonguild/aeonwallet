@@ -23,8 +23,11 @@
             app:constraint_referenced_ids="
             rv_wallet_info_list,
             transfer_recipient_info,
+            transfer_recipient_info_label,
             transfer_amount_info,
-            transfer_amount_info_label,floating_button_send,textView" />
+            transfer_amount_info_label,
+            floating_button_send,
+            textView" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -44,7 +47,6 @@
             android:id="@+id/transfer_recipient_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
             android:gravity="start|top"
@@ -53,9 +55,19 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/transfer_recipient_info_label"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+        <ImageView
+            android:id="@+id/transfer_recipient_info_label"
+            android:layout_width="30dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/ic_android"
+            app:layout_constraintBottom_toBottomOf="@+id/transfer_recipient_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/transfer_recipient_info"
+            app:layout_constraintVertical_bias="0.0" />
         <EditText
             android:id="@+id/transfer_amount_info"
             android:layout_width="0dp"
@@ -69,6 +81,16 @@
             app:layout_constraintStart_toEndOf="@+id/transfer_amount_info_label"
             app:layout_constraintTop_toBottomOf="@+id/transfer_recipient_info" />
 
+        <ImageView
+            android:id="@+id/transfer_amount_info_label"
+            android:layout_width="30dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/ic_coins_789"
+            app:layout_constraintBottom_toBottomOf="@+id/transfer_amount_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/transfer_amount_info"
+            app:layout_constraintVertical_bias="0.0" />
         <include
             android:id="@+id/rv_wallet_info_list"
             layout="@layout/layout_wallet_list"
@@ -95,16 +117,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageView
-            android:id="@+id/transfer_amount_info_label"
-            android:layout_width="30dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="24dp"
-            android:src="@drawable/ic_aeon_logo"
-            app:layout_constraintBottom_toBottomOf="@+id/transfer_amount_info"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/transfer_amount_info"
-            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_button_send"
