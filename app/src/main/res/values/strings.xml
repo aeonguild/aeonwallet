@@ -41,7 +41,7 @@
     <string name="title_new_wallet">New Wallet</string>
     <string name="title_node">Node</string>
     <string name="title_recents">Recents</string>
-    <string name="title_send_aeon">Send Aeon</string>
+    <string name="title_send_aeon">Send Coins</string>
     <string name="title_transaction_pending">Pending Transaction</string>
     <string name="title_transfer">Transfer</string>
     <string name="title_wallet">Wallet</string>
@@ -64,15 +64,15 @@
     <string name="text_restore_height">Restore Height</string>
     <string name="text_secret_view_key">Secret View Key</string>
     <string name="text_secret_spend_key">Secret Spend Key</string>
-    <string name="text_seed_description">Every aeon wallet has a unique and secret seed
+    <string name="text_seed_description">Every Aeon wallet has a unique and secret seed
         phrase.</string>
     <string name="text_seed_here">YOUR SEED HERE</string>
     <string name="text_seed_reminder_2">After you delete your wallet or uninstall this app,
         your seed phrase can be still used to access your wallet with any other aeon wallet
         software. Copy this down.</string>
     <string name="text_seed">Mnemonic Seed</string>
-    <string name="text_transaction_aeon"> aeon.</string>
-    <string name="text_transaction_aeon_to"> aeon to </string>
+    <string name="text_transaction_aeon"> coins.</string>
+    <string name="text_transaction_aeon_to"> coins to </string>
     <string name="text_transaction_for_a_fee_of"> for a fee of </string>
     <string name="text_transaction_you_are_sending">You are sending </string>
 </resources>

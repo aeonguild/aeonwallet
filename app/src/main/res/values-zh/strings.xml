@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aeon 钱包</string>
+    <string name="app_name">Aeon Wallet</string>
     <string name="button_add">添加</string>
     <string name="button_configure">更改设置</string>
     <string name="button_confirm">确认</string>
@@ -41,7 +41,7 @@
     <string name="title_new_wallet">新钱包</string>
     <string name="title_node">节点</string>
     <string name="title_recents">最近</string>
-    <string name="title_send_aeon">发送 Aeon</string>
+    <string name="title_send_aeon">发送币</string>
     <string name="title_transaction_pending">待定交易</string>
     <string name="title_transfer">转账</string>
     <string name="title_wallet">钱包</string>
@@ -63,12 +63,12 @@
     <string name="text_restore_height">创建时高度</string>
     <string name="text_secret_view_key">查看私钥</string>
     <string name="text_secret_spend_key">支付私钥</string>
-    <string name="text_seed_description">每个aeon钱包都拥有一个独特并且秘密的助记词。</string>
+    <string name="text_seed_description">每个Aeon钱包都拥有一个独特并且秘密的助记词。</string>
     <string name="text_seed_here">您的助记词🔑</string>
     <string name="text_seed_reminder_2">当您删除钱包或卸载此应用后，您的助记词仍可以在其他aeon钱包应用上打开您的钱包。您可以记下您的助记词。</string>
     <string name="text_seed">助记词</string>
-    <string name="text_transaction_aeon"> aeon.</string>
-    <string name="text_transaction_aeon_to"> aeon给 </string>
+    <string name="text_transaction_aeon"> 币.</string>
+    <string name="text_transaction_aeon_to"> 币给 </string>
     <string name="text_transaction_for_a_fee_of"> 手续费为 </string>
     <string name="text_transaction_you_are_sending">您在发送 </string>
 </resources>
