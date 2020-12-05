@@ -1,6 +1,6 @@
 <p align="center">
   <img src="pouch.svg" width="250" title="hover text">
-  <img src="Screenshot_20201204-185617_Aeon_Wallet[1].jpg" width="250" title="hover text">
+  <img src="Screenshot_20201205-111409_Aeon_Wallet[1].jpg" width="250" title="hover text">
 </p>
 
 # aeonwallet
