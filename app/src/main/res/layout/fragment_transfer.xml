@@ -85,7 +85,9 @@
             android:layout_width="30dp"
             android:layout_height="31dp"
             android:layout_marginStart="24dp"
-            android:src="@drawable/ic_coin"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:src="@mipmap/ic_launcher_foreground"
             app:layout_constraintBottom_toBottomOf="@+id/transfer_amount_info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/transfer_amount_info" />
