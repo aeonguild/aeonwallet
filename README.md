@@ -1,6 +1,6 @@
 <p align="center">
   <img src="ic_launcher_round.png" width="250" title="hover text">
-  <img src="Screenshot_20201208-100308_Aeon_Wallet[1].jpg" width="250" title="hover text">
+  <img src="Screenshot_20201208-101234_Aeon_Wallet[1].jpg" width="250" title="hover text">
 </p>
 
 # aeonwallet
