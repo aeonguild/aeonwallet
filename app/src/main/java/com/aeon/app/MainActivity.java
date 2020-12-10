@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.aeon.app.models.Node;
 import com.aeon.app.ui.contact.ContactContent;
 import com.aeon.app.ui.wallet.WalletContent;
 
@@ -77,6 +78,7 @@ public class MainActivity extends ButtonActions {
 
         loadContacts();
         loadSavedWallet();
+        loadSavedNode();
 
         if(BackgroundThread.isManaging){
             group_main_on.setVisibility(View.VISIBLE);
@@ -119,7 +121,7 @@ public class MainActivity extends ButtonActions {
     private void loadContacts(){
         SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         for(String key : sharedPref.getAll().keySet()){
-            if(!key.equals("path")&&!key.equals("password") ){
+            if(!key.equals("path")&&!key.equals("password")&&!key.equals("ip")&&!key.equals("port") ){
                 if(!ContactContent.ITEMS.contains(sharedPref.getString(key , ""))) {
                     ContactContent.addItem(
                             new ContactContent.Contact(sharedPref.getString(key , ""), key)
@@ -138,9 +140,17 @@ public class MainActivity extends ButtonActions {
             WalletContent.clearItems();
             WalletContent.addItem(
                     new WalletContent.Item("",
-                    getResources().getString(R.string.text_loading_wallet))
+                            getResources().getString(R.string.text_loading_wallet))
             );
             BackgroundThread.queueWallet(path);
+        }
+    }
+    private void loadSavedNode(){
+        SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+        String ip = sharedPref.getString("ip" , null);
+        String port = sharedPref.getString("port" , null);
+        if(ip != null){
+            BackgroundThread.setNode(new Node(ip,port));
         }
     }
     @Override
@@ -166,6 +176,10 @@ public class MainActivity extends ButtonActions {
         }
         for(ContactContent.Contact c : ContactContent.ITEMS){
             editor.putString(c.address, c.name);
+        }
+        if(BackgroundThread.isConnected){
+            editor.putString("ip", BackgroundThread.node.hostAddress);
+            editor.putString("port", BackgroundThread.node.hostPort);
         }
         editor.commit();
     }

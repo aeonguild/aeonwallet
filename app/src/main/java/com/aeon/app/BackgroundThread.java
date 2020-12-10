@@ -28,7 +28,6 @@ import com.aeon.app.ui.wallet.WalletContent;
 public class BackgroundThread extends Thread{
     private static final String TAG = "BackgroundThread";
     private int sleepCount = 0;
-    private static Node node;
     private static Wallet wallet = null;
     private static boolean isNodeChanged;
     public static boolean isRunning = false;
@@ -36,6 +35,7 @@ public class BackgroundThread extends Thread{
     public static boolean isConnected = false;
     public static boolean isShownNewWalletFragment = false;
     public static TransactionPending pendingTransaction = null;
+    public static Node node;
     public static String path = null;
     public static String seed = null;
     public BackgroundThread() {
@@ -46,9 +46,7 @@ public class BackgroundThread extends Thread{
         isRunning = true;
         Log.v(TAG, "isRunning");
         while(!Thread.interrupted()){
-            Log.v(TAG, "!Thread.interrupted()");
             if(isManaging && ! wallet.isClosed) {
-                Log.v(TAG, "isManaging && !wallet.isClosed");
                 if (wallet.isExists == false) {
                     Log.v(TAG, "!wallet.isExists");
                     wallet.create();
@@ -58,7 +56,6 @@ public class BackgroundThread extends Thread{
                     connectToNode();
                     init();
                 } else {
-                    Log.v(TAG, "wallet.isExists && wallet.isInit");
                     if(sleepCount==300){
                         sleepCount = 0;
                         updateTransactions();
@@ -71,7 +68,6 @@ public class BackgroundThread extends Thread{
                 }
             }
             try {
-                Log.v(TAG, "Thread.sleep");
                 Thread.sleep(100);
                 sleepCount++;
             } catch (InterruptedException e) {
@@ -135,13 +131,14 @@ public class BackgroundThread extends Thread{
     }
 
     private void clearTransactionQueue(){
-        Log.v(TAG, "clearTransactionQueue");
         if(pendingTransaction == null){
             return;
         } else if(!pendingTransaction.isCreated){
+            Log.v(TAG, "clearTransactionQueue");
             pendingTransaction.setHandle(wallet.createTransaction(pendingTransaction));
             pendingTransaction.isCreated = true;
         } else if(pendingTransaction.isConfirmedByUser) {
+            Log.v(TAG, "clearTransactionQueue");
             pendingTransaction.commit();
             pendingTransaction.refresh();
             switch (pendingTransaction.status) {
