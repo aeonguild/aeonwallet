@@ -28,7 +28,7 @@ public class TransactionPending {
     public boolean isCreated;
     public boolean isAttempted;
     public String recipient;
-    public String paymentID;
+    public String paymentID = "";
     public long amount;
     public long fee;
     public long dust;
@@ -56,7 +56,7 @@ public class TransactionPending {
         this.amount = amount;
         this.fee = fee;
     }
-    public TransactionPending(String recipient, long amount,String paymentID){
+    public TransactionPending(String recipient, long amount, String paymentID){
         Log.v(TAG, "Pending");
         isCommitted = false;
         isConfirmedByUser = false;

@@ -136,9 +136,9 @@ public class Wallet {
         Log.v(TAG, "createTransaction");
         BigDecimal atomicBalance = new BigDecimal(getBalanceJNI(0));
         if(Math.abs(tx.amount-atomicBalance.longValue())<1){
-            return createSweepAllJNI(tx.recipient,"",3,1);
+            return createSweepAllJNI(tx.recipient,tx.paymentID,3,0);
         } else {
-            return createTransactionJNI(tx.recipient, "", tx.amount, 3, 0);
+            return createTransactionJNI(tx.recipient, tx.paymentID, tx.amount, 3, 0);
         }
     }
     public void disposeTransaction(TransactionPending pendingTransaction){
