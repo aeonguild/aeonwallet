@@ -36,6 +36,7 @@
     <string name="row_wallet_status">状态</string>
     <string name="row_wallet_synchronized">已同步</string>
     <string name="row_wallet_transaction_count">交易数</string>
+    <string name="title_aeon_news">Aeon-Community消息</string>
     <string name="title_contacts">联系人</string>
     <string name="title_mnemonic_seed_phrase">助记词</string>
     <string name="title_new_wallet">新钱包</string>

@@ -27,16 +27,20 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aeon.app.BackgroundThread;
 import com.aeon.app.MainActivity;
 import com.aeon.app.R;
+import com.aeon.app.ui.blog.BlogAdapter;
+import com.aeon.app.ui.blog.BlogContent;
 import com.aeon.app.ui.wallet.WalletAdapter;
 import com.aeon.app.ui.wallet.WalletContent;
 
 public class TransferFragment extends Fragment {
     public static WalletAdapter walletAdapter;
+    public static BlogAdapter blogAdapter;
     public static Group transferGroup;
     public static Group onboardGroup;
     private EditText recipient;
@@ -50,6 +54,10 @@ public class TransferFragment extends Fragment {
         walletAdapter = new WalletAdapter(WalletContent.ITEMS);
         walletAdapter.showSummary(true);
         rv.setAdapter(walletAdapter);
+        rv = view.findViewById(R.id.rv_blog_list);
+        rv.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        blogAdapter = new BlogAdapter(BlogContent.ITEMS,context);
+        rv.setAdapter(blogAdapter);
         transferGroup = view.findViewById(R.id.group_transfer);
         onboardGroup = view.findViewById(R.id.group_onboard);
         recipient = (EditText)view.findViewById(R.id.transfer_recipient_info);
