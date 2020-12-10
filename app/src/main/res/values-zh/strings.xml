@@ -61,6 +61,7 @@
     <string name="text_password">密码</string>
     <string name="text_password_description">此密码仅用于在此应用上加密您的钱包。</string>
     <string name="text_recipient_address">接收人地址</string>
+    <string name="text_requires_payment_id">Payment ID</string>
     <string name="text_restore_height">创建时高度</string>
     <string name="text_secret_view_key">查看私钥</string>
     <string name="text_secret_spend_key">支付私钥</string>
