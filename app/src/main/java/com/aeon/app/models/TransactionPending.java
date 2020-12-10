@@ -28,6 +28,7 @@ public class TransactionPending {
     public boolean isCreated;
     public boolean isAttempted;
     public String recipient;
+    public String paymentID;
     public long amount;
     public long fee;
     public long dust;
@@ -52,6 +53,17 @@ public class TransactionPending {
         isAttempted = false;
         isCreated = false;
         this.recipient = recipient;
+        this.amount = amount;
+        this.fee = fee;
+    }
+    public TransactionPending(String recipient, long amount,String paymentID){
+        Log.v(TAG, "Pending");
+        isCommitted = false;
+        isConfirmedByUser = false;
+        isAttempted = false;
+        isCreated = false;
+        this.recipient = recipient;
+        this.paymentID = paymentID;
         this.amount = amount;
         this.fee = fee;
     }

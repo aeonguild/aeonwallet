@@ -14,7 +14,7 @@
             android:id="@+id/group_onboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="text_onboard"/>
+            app:constraint_referenced_ids="text_onboard" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group_transfer"
@@ -27,34 +27,34 @@
             transfer_amount_info,
             transfer_amount_info_label,
             floating_button_send,
-            textView,textView2,rv_blog_list" />
+            textView,textView2,rv_blog_list,text_payment_id,check_payment_id" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="-8dp"
             android:layout_marginEnd="16dp"
-            android:scaleY="1.125"
-            app:layout_constraintBottom_toBottomOf="@+id/transfer_amount_info"
+            app:layout_constraintBottom_toBottomOf="@+id/check_payment_id"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/transfer_recipient_info"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/corners" />
 
         <EditText
             android:id="@+id/transfer_recipient_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:gravity="start|top"
             android:hint="@string/text_recipient_address"
             android:inputType="textVisiblePassword|textMultiLine"
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/transfer_recipient_info_label"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -67,11 +67,11 @@
             app:layout_constraintBottom_toBottomOf="@+id/transfer_recipient_info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/transfer_recipient_info" />
+
         <EditText
             android:id="@+id/transfer_amount_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:hint="@string/text_amount"
             android:inputType="numberDecimal"
@@ -164,6 +164,33 @@
             android:text="@string/title_aeon_news"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <CheckBox
+            android:id="@+id/check_payment_id"
+            style="@android:style/Widget.Material.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Requires Payment ID"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_payment_id" />
+
+        <EditText
+            android:id="@+id/text_payment_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:gravity="start|top"
+            android:hint="Payment ID"
+            android:inputType="textVisiblePassword|textMultiLine"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/transfer_recipient_info"
             app:layout_constraintTop_toBottomOf="@+id/transfer_amount_info" />
 
 

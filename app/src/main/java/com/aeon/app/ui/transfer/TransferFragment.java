@@ -21,6 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -44,6 +46,8 @@ public class TransferFragment extends Fragment {
     public static Group transferGroup;
     public static Group onboardGroup;
     private EditText recipient;
+    private CheckBox check_payment_id;
+    private EditText text_payment_id;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,6 +65,19 @@ public class TransferFragment extends Fragment {
         transferGroup = view.findViewById(R.id.group_transfer);
         onboardGroup = view.findViewById(R.id.group_onboard);
         recipient = (EditText)view.findViewById(R.id.transfer_recipient_info);
+        check_payment_id = (CheckBox)view.findViewById(R.id.check_payment_id);
+        text_payment_id = (EditText)view.findViewById(R.id.text_payment_id);
+        check_payment_id.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                EditText text_payment_id = (EditText)view.findViewById(R.id.text_payment_id);
+                if(isChecked){
+                    text_payment_id.setVisibility(View.VISIBLE);
+                } else {
+                    text_payment_id.setVisibility(View.GONE);
+                }
+            }
+        });
         return view;
     }
 
@@ -70,6 +87,7 @@ public class TransferFragment extends Fragment {
         MainActivity.showUI();
         if(BackgroundThread.isManaging){
             transferGroup.setVisibility(View.VISIBLE);
+            text_payment_id.setVisibility(View.GONE);
             onboardGroup.setVisibility(View.GONE);
             recipient.requestFocus();
             InputMethodManager imm =
@@ -77,6 +95,7 @@ public class TransferFragment extends Fragment {
             imm.showSoftInput(getActivity().getCurrentFocus(), 0);
         } else {
             transferGroup.setVisibility(View.GONE);
+            text_payment_id.setVisibility(View.GONE);
             onboardGroup.setVisibility(View.VISIBLE);
         }
         MainActivity.button_transfer.setTextAppearance(R.style.Button_Selected);
@@ -98,20 +117,6 @@ public class TransferFragment extends Fragment {
             } catch (NullPointerException e){
                 e.printStackTrace();
             }
-        }
-    }
-
-    public static void hideUI(View view){
-        transferGroup.setVisibility(View.GONE);
-        onboardGroup.setVisibility(View.GONE);
-    }
-    public static void showUI(View view){
-        if(BackgroundThread.isManaging){
-            transferGroup.setVisibility(View.VISIBLE);
-            onboardGroup.setVisibility(View.GONE);
-        } else {
-            transferGroup.setVisibility(View.GONE);
-            onboardGroup.setVisibility(View.VISIBLE);
         }
     }
 }

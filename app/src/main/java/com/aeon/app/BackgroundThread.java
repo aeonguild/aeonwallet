@@ -113,6 +113,10 @@ public class BackgroundThread extends Thread{
         Log.v(TAG, "queueTransaction");
         pendingTransaction = new TransactionPending(dst_address,amount);
     }
+    public static void queueTransaction(String dst_address, long amount, String paymentID){
+        Log.v(TAG, "queueTransaction");
+        pendingTransaction = new TransactionPending(dst_address,amount,paymentID);
+    }
     public static void confirmTransaction(){
         Log.v(TAG, "confirmTransaction");
         pendingTransaction.isConfirmedByUser = true;

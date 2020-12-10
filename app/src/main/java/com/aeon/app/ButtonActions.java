@@ -270,9 +270,19 @@ public class ButtonActions extends AppCompatActivity {
         View transferFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_transfer);
         EditText recipientInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_recipient_info);
         EditText amountInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_amount_info);
-        BackgroundThread.queueTransaction(
-                recipientInfo.getText().toString(),(new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
-        );
+        EditText paymentID = (EditText)transferFragmentLayout.findViewById(R.id.text_payment_id);
+        if(paymentID.getVisibility()==View.VISIBLE){
+            BackgroundThread.queueTransaction(
+                    recipientInfo.getText().toString(),
+                    (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue()),
+                    paymentID.getText().toString()
+            );
+        }else {
+            BackgroundThread.queueTransaction(
+                    recipientInfo.getText().toString(),
+                    (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
+            );
+        }
         goToTransactionPendingFragment(v);
     }
 
