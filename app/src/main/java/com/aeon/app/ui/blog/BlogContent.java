@@ -2,6 +2,10 @@ package com.aeon.app.ui.blog;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
 
 import com.aeon.app.ui.contact.ContactContent;
 import com.aeon.app.ui.contact.ContactFragment;
@@ -114,7 +118,19 @@ public class BlogContent {
             connection.connect();
             InputStream input = connection.getInputStream();
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
+            int width, height;
+            height = myBitmap.getHeight();
+            width = myBitmap.getWidth();
+
+            Bitmap bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+            Canvas c = new Canvas(bmpGrayscale);
+            Paint paint = new Paint();
+            ColorMatrix cm = new ColorMatrix();
+            cm.setSaturation(0);
+            ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
+            paint.setColorFilter(f);
+            c.drawBitmap(myBitmap, 0, 0, paint);
+            return bmpGrayscale;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
