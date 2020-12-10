@@ -78,6 +78,7 @@ public class TransferFragment extends Fragment {
                 }
             }
         });
+
         return view;
     }
 
@@ -93,6 +94,7 @@ public class TransferFragment extends Fragment {
             InputMethodManager imm =
                     (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(getActivity().getCurrentFocus(), 0);
+            BackgroundThread.disposeTransaction();
         } else {
             transferGroup.setVisibility(View.GONE);
             text_payment_id.setVisibility(View.GONE);

@@ -36,8 +36,6 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final BlogAdapter.ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        System.out.println(holder.mItem.toString());
-        System.out.println(holder.mItem.toString());
         holder.mNameView.setText(mValues.get(position).name);
         holder.mImageView.setImageBitmap(mValues.get(position).image);
         holder.mImageView.setOnClickListener(new View.OnClickListener() {

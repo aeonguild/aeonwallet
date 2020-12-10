@@ -56,30 +56,35 @@ public class TransferPendingFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (BackgroundThread.pendingTransaction.fee==0) {
+                while (BackgroundThread.pendingTransaction.fee==0 && !BackgroundThread.pendingTransaction.isDisposedByUser) {
                     try {
-                        Thread.sleep(100);
+                        System.out.println(BackgroundThread.pendingTransaction.fee);
+                        System.out.println(BackgroundThread.pendingTransaction.paymentID);
+                        System.out.println(BackgroundThread.pendingTransaction.getHandle());
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        text_transfer_info.setText(
-                                MainActivity.getString("text_transaction_you_are_sending") +" "
-                                        +BigDecimal.valueOf(BackgroundThread.pendingTransaction.amount).movePointLeft(12).toPlainString()
-                                        +" "+ MainActivity.getString("text_transaction_aeon_to") +" "
-                                        + BackgroundThread.pendingTransaction.recipient
-                                        +" "+ MainActivity.getString("text_transaction_for_a_fee_of")  +" "
-                                        + BigDecimal.valueOf(BackgroundThread.pendingTransaction.fee).movePointLeft(12).toPlainString()
-                                        +" "+ MainActivity.getString("text_transaction_aeon")
-                        );
-                        understood.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
+                if(BackgroundThread.pendingTransaction!= null && !BackgroundThread.pendingTransaction.isDisposedByUser){
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            text_transfer_info.setText(
+                                    MainActivity.getString("text_transaction_you_are_sending") +" "
+                                            +BigDecimal.valueOf(BackgroundThread.pendingTransaction.amount).movePointLeft(12).toPlainString()
+                                            +" "+ MainActivity.getString("text_transaction_aeon_to") +" "
+                                            + BackgroundThread.pendingTransaction.recipient
+                                            +" "+ MainActivity.getString("text_transaction_for_a_fee_of")  +" "
+                                            + BigDecimal.valueOf(BackgroundThread.pendingTransaction.fee).movePointLeft(12).toPlainString()
+                                            +" "+ MainActivity.getString("text_transaction_aeon")
+                            );
+                            understood.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+            };
         }).start();
         return v;
     }

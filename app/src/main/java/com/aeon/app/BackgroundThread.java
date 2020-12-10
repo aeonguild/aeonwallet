@@ -64,7 +64,11 @@ public class BackgroundThread extends Thread{
                         refreshWalletInfo();
                         refreshNode();
                     }
-                    clearTransactionQueue();
+                    if(sleepCount%100==0) {
+                        refreshWalletInfo();
+                        refreshNode();
+                        clearTransactionQueue();
+                    }
                 }
             }
             try {
@@ -119,7 +123,15 @@ public class BackgroundThread extends Thread{
     }
     public static void confirmTransaction(){
         Log.v(TAG, "confirmTransaction");
-        pendingTransaction.isConfirmedByUser = true;
+        if(pendingTransaction!=null) {
+            pendingTransaction.isConfirmedByUser = true;
+        }
+    }
+    public static void disposeTransaction(){
+        Log.v(TAG, "disposeTransaction");
+        if(pendingTransaction!=null) {
+            pendingTransaction.isDisposedByUser = true;
+        }
     }
 
     public static void setAddressIndex(int index){
@@ -154,6 +166,9 @@ public class BackgroundThread extends Thread{
                     break;
                 default:
             }
+        } else if (pendingTransaction.isDisposedByUser && !pendingTransaction.isConfirmedByUser) {
+            wallet.disposeTransaction(pendingTransaction);
+            pendingTransaction = null;
         } else {
             pendingTransaction.refresh();
         }

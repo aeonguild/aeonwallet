@@ -22,6 +22,7 @@ public class TransactionPending {
         System.loadLibrary("transaction_pending_jni");
     }
     private static final String TAG = "Pending";
+    public boolean isDisposedByUser;
     private long handle;
     public boolean isCommitted;
     public boolean isConfirmedByUser;
@@ -50,6 +51,7 @@ public class TransactionPending {
         Log.v(TAG, "Pending");
         isCommitted = false;
         isConfirmedByUser = false;
+        isDisposedByUser = false;
         isAttempted = false;
         isCreated = false;
         this.recipient = recipient;
@@ -60,6 +62,7 @@ public class TransactionPending {
         Log.v(TAG, "Pending");
         isCommitted = false;
         isConfirmedByUser = false;
+        isDisposedByUser = false;
         isAttempted = false;
         isCreated = false;
         this.recipient = recipient;
@@ -71,6 +74,9 @@ public class TransactionPending {
         Log.v(TAG, "setHandle");
         this.handle = handle;
         refresh();
+    }
+    public long getHandle(){
+        return handle;
     }
     public void refresh(){
         Log.v(TAG, "refresh");
