@@ -22,9 +22,9 @@
     <string name="row_node_target">Target</string>
     <string name="row_node_version">Version</string>
     <string name="row_wallet_account">Account</string>
-    <string name="row_wallet_address">Receiving Address</string>
-    <string name="row_wallet_balance_total">Balance Total</string>
-    <string name="row_wallet_balance_spendable">Balance Spendable</string>
+    <string name="row_wallet_address">Address</string>
+    <string name="row_wallet_balance_total">Coins</string>
+    <string name="row_wallet_balance_spendable">Available</string>
     <string name="row_wallet_index">Index</string>
     <string name="row_wallet_name">Name</string>
     <string name="row_wallet_path">Path</string>
