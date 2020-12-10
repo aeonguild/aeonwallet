@@ -77,7 +77,7 @@ public class ButtonActions extends AppCompatActivity {
                         thread.start();
                         goToNewWalletFragment(v);
                         WalletContent.clearItems();
-                        WalletContent.addItem(new WalletContent.Item("", getResources().getString(R.string.text_loading_wallet)));
+                        WalletContent.addItem(new WalletContent.Item(getResources().getString(R.string.text_loading_wallet),"" ));
                         BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis());
                         View walletFragmentLayout = findViewById(R.id.layout_wallet);
                         WalletFragment.openWalletView(walletFragmentLayout);
@@ -130,7 +130,7 @@ public class ButtonActions extends AppCompatActivity {
                             thread = new BackgroundThread();
                             thread.start();
                             WalletContent.clearItems();
-                            WalletContent.addItem(new WalletContent.Item("", getResources().getString(R.string.text_loading_wallet)));
+                            WalletContent.addItem(new WalletContent.Item(getResources().getString(R.string.text_loading_wallet),"" ));
                             BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis(), seed, restoreHeight);
                             View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
                             WalletFragment.openWalletView(walletFragmentLayout);
@@ -191,7 +191,7 @@ public class ButtonActions extends AppCompatActivity {
                             thread = new BackgroundThread();
                             thread.start();
                             WalletContent.clearItems();
-                            WalletContent.addItem(new WalletContent.Item("", getResources().getString(R.string.text_loading_wallet)));
+                            WalletContent.addItem(new WalletContent.Item(getResources().getString(R.string.text_loading_wallet),"" ));
                             BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis(), account,view,spend, restoreHeight);
                             View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
                             WalletFragment.openWalletView(walletFragmentLayout);
