@@ -15,6 +15,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.aeon.app.models.Node;
@@ -23,6 +25,7 @@ import com.aeon.app.models.TransactionPending;
 import com.aeon.app.models.Wallet;
 import com.aeon.app.ui.node.NodeContent;
 import com.aeon.app.ui.recent.RecentContent;
+import com.aeon.app.ui.transfer.TransferFragment;
 import com.aeon.app.ui.wallet.WalletContent;
 
 public class BackgroundThread extends Thread{
@@ -201,7 +204,13 @@ public class BackgroundThread extends Thread{
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_seed"), wallet.seed));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_secret_spend_key"), wallet.secretSpendKey));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_secret_view_key"), wallet.secretViewKey));
-        NodeContent.updateItem(MainActivity.getString("row_node_version"),String.valueOf(wallet.node.version));
+        NodeContent.updateItem(MainActivity.getString("row_node_version"),String.valueOf(wallet.node.version));Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                TransferFragment.updateWalletInfo(wallet.address,MainActivity.getString("text_unknown"),"");
+            }
+        });
     }
     private void connectToNode(){
         Log.v(TAG, "connectToNode");
@@ -229,6 +238,13 @@ public class BackgroundThread extends Thread{
         WalletContent.updateItem(MainActivity.getString("row_wallet_balance_spendable"), wallet.unlockedBalance.toPlainString());
         WalletContent.updateItem(MainActivity.getString("row_wallet_synchronized"), String.valueOf(wallet.isSynchronized));
         WalletContent.updateItem(MainActivity.getString("row_wallet_status"), String.valueOf(wallet.status));
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                TransferFragment.updateWalletInfo(wallet.address,wallet.unlockedBalance.toPlainString(),wallet.balance.toPlainString());
+            }
+        });
     }
     public void refreshNode(){
         Log.v(TAG, "refreshNode");

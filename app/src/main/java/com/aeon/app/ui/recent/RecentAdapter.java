@@ -45,7 +45,7 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mDateView.setText(String.valueOf(new java.util.Date((long)holder.mItem.timestamp*1000)));
+        holder.mDateView.setText("#"+String.valueOf(mValues.size()-position)+" >> "+String.valueOf(new java.util.Date((long)holder.mItem.timestamp*1000)));
         holder.mDirectionView.setText(String.valueOf(holder.mItem.direction));
         holder.mIdView.setText(String.valueOf(holder.mItem.height));
         holder.mContentView.setText(String.valueOf(holder.mItem.amount.toPlainString()));

@@ -17,6 +17,7 @@ limitations under the License.
 */
 import android.content.Context;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.Group;
@@ -48,16 +50,18 @@ public class TransferFragment extends Fragment {
     private EditText recipient;
     private CheckBox check_payment_id;
     private EditText text_payment_id;
+    public static TextView text_address;
+    public static TextView text_balance;
+    public static TextView text_available;
+    public static String address = "" ;
+    public static String available= "";
+    public static String balance= "";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_transfer, container, false);
         Context context = view.getContext();
-        RecyclerView rv = view.findViewById(R.id.rv_wallet_info_list);
-        rv.setLayoutManager(new GridLayoutManager(context, 1));
-        walletAdapter = new WalletAdapter(WalletContent.ITEMS);
-        walletAdapter.showSummary(true);
-        rv.setAdapter(walletAdapter);
+        RecyclerView rv;
         rv = view.findViewById(R.id.rv_blog_list);
         rv.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         blogAdapter = new BlogAdapter(BlogContent.ITEMS,context);
@@ -79,9 +83,13 @@ public class TransferFragment extends Fragment {
             }
         });
 
+        text_address = view.findViewById(R.id.text_address);
+        text_available = view.findViewById(R.id.text_available);
+        text_balance = view.findViewById(R.id.text_balance);
+        text_available.setSelected(true);
+        text_balance.setSelected(true);
         return view;
     }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -106,6 +114,22 @@ public class TransferFragment extends Fragment {
         MainActivity.image_transfer.setVisibility(View.VISIBLE);
         MainActivity.image_contacts.setVisibility(View.GONE);
         MainActivity.image_recents.setVisibility(View.GONE);
+        if(text_address!=null) {
+            text_address.setText(address);
+            text_available.setText(available);
+            text_balance.setText(balance);
+        }
+    }
+
+    public static void updateWalletInfo(String address2, String available2, String balance2){
+        address= address2;
+        available= available2;
+        balance= balance2;
+        if(text_address!=null) {
+            text_address.setText(address);
+            text_available.setText(available);
+            text_balance.setText(balance);
+        }
     }
 
     @Override
