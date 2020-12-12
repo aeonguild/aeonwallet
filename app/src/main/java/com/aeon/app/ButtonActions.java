@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aeon.app.models.Node;
 import com.aeon.app.ui.contact.ContactContent;
+import com.aeon.app.ui.node.NodeContent;
 import com.aeon.app.ui.transfer.TransferFragment;
 import com.aeon.app.ui.wallet.WalletContent;
 import com.aeon.app.ui.wallet.WalletFragment;
@@ -267,10 +268,9 @@ public class ButtonActions extends AppCompatActivity {
         showKeyboard();
     }
     public void createTransaction(View v) {
-        View transferFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_transfer);
-        EditText recipientInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_recipient_info);
-        EditText amountInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_amount_info);
-        EditText paymentID = (EditText)transferFragmentLayout.findViewById(R.id.text_payment_id);
+        EditText recipientInfo = (EditText)findViewById(R.id.transfer_recipient_info);
+        EditText amountInfo = (EditText)findViewById(R.id.transfer_amount_info);
+        EditText paymentID = (EditText)findViewById(R.id.text_payment_id);
         if(!recipientInfo.getText().toString().equals("")&&!amountInfo.getText().toString().equals("")) {
             if (paymentID.getVisibility() == View.VISIBLE) {
                 BackgroundThread.queueTransaction(
@@ -342,6 +342,7 @@ public class ButtonActions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!address.getText().toString().equals("")) {
+                    NodeContent.reset();
                     String input = address.getText().toString();
                     String[] host = input.split(":");
                     if (host.length > 1) {
@@ -362,6 +363,7 @@ public class ButtonActions extends AppCompatActivity {
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NodeContent.reset();
                 BackgroundThread.setNode(Node.pickRandom());
                 address.setEnabled(false);
                 address.setText(null);
@@ -527,6 +529,26 @@ public class ButtonActions extends AppCompatActivity {
                 R.id.nav_host_fragment
         ).navigate(
                 R.id.navigation_transaction_pending,
+                null,
+                navOptions
+        );
+    }
+    public void goToSendFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_send,
+                null,
+                navOptions
+        );
+    }
+    public void goToReceiveFragment(View view){
+        Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+        ).navigate(
+                R.id.navigation_receive,
                 null,
                 navOptions
         );

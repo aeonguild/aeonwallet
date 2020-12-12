@@ -17,6 +17,8 @@ limitations under the License.
 */
 import android.util.Log;
 
+import com.aeon.app.BackgroundThread;
+
 import java.math.BigDecimal;
 
 public class TransactionInfo {
@@ -94,6 +96,9 @@ public class TransactionInfo {
     public long getHeight(){
         Log.v(TAG, "getHeight");
         this.height=getHeightJNI();
+        if(this.height==0){
+            this.height = BackgroundThread.height+1;
+        }
         return height;
     }
     public long getConfirmations(){

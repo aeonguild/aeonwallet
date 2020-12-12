@@ -77,4 +77,8 @@
     <string name="text_transaction_for_a_fee_of"> for a fee of </string>
     <string name="text_transaction_you_are_sending">You are sending </string>
     <string name="text_requires_payment_id">Payment ID</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_receive">Receive</string>
+    <string name="title_send">Send</string>
 </resources>

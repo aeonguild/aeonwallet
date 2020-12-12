@@ -73,4 +73,6 @@
     <string name="text_transaction_aeon_to"> 币给 </string>
     <string name="text_transaction_for_a_fee_of"> 手续费为 </string>
     <string name="text_transaction_you_are_sending">您在发送 </string>
+    <string name="title_receive">Receive</string>
+    <string name="title_send">Send</string>
 </resources>

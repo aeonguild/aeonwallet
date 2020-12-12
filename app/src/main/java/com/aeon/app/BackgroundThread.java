@@ -25,6 +25,7 @@ import com.aeon.app.models.TransactionPending;
 import com.aeon.app.models.Wallet;
 import com.aeon.app.ui.node.NodeContent;
 import com.aeon.app.ui.recent.RecentContent;
+import com.aeon.app.ui.transfer.ReceiveFragment;
 import com.aeon.app.ui.transfer.TransferFragment;
 import com.aeon.app.ui.wallet.WalletContent;
 
@@ -39,6 +40,7 @@ public class BackgroundThread extends Thread{
     public static boolean isShownNewWalletFragment = false;
     public static TransactionPending pendingTransaction = null;
     public static Node node;
+    public static long height;
     public static String path = null;
     public static String seed = null;
     public BackgroundThread() {
@@ -211,7 +213,8 @@ public class BackgroundThread extends Thread{
         handler.post(new Runnable() {
             @Override
             public void run() {
-                TransferFragment.updateWalletInfo(wallet.address,MainActivity.getString("text_unknown"),"");
+                TransferFragment.updateWalletInfo(MainActivity.getString("text_unknown"),"");
+                ReceiveFragment.updateAddress(MainActivity.getString("text_unknown"));
             }
         });
     }
@@ -245,12 +248,14 @@ public class BackgroundThread extends Thread{
         handler.post(new Runnable() {
             @Override
             public void run() {
-                TransferFragment.updateWalletInfo(wallet.address,wallet.unlockedBalance.toPlainString(),wallet.balance.toPlainString());
+                TransferFragment.updateWalletInfo(wallet.unlockedBalance.toPlainString(),wallet.balance.toPlainString());
+                ReceiveFragment.updateAddress(wallet.address);
             }
         });
     }
     public void refreshNode(){
         Log.v(TAG, "refreshNode");
+        this.height=wallet.node.height;
         NodeContent.updateItem(MainActivity.getString("row_node_height"),String.valueOf(wallet.node.height));
         NodeContent.updateItem(MainActivity.getString("row_node_target"),String.valueOf(wallet.node.target));
         NodeContent.updateItem(MainActivity.getString("row_node_status"),String.valueOf(wallet.connectionStatus));
@@ -258,6 +263,7 @@ public class BackgroundThread extends Thread{
         if(isNodeChanged){
             isConnected = false;
             wallet.setNode(BackgroundThread.node);
+            isNodeChanged=false;
             NodeContent.updateItem(MainActivity.getString("row_node_address"), BackgroundThread.node.hostAddress+":"+ BackgroundThread.node.hostPort);
         } else if (wallet.connectionStatus == Wallet.ConnectionStatus.Connected){
             isConnected = true;
