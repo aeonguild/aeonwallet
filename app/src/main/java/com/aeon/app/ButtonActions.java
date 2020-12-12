@@ -339,16 +339,13 @@ public class ButtonActions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!address.getText().toString().equals("")) {
-                    if(thread.isRunning) {
-                        thread.interrupt();
-                    }
                     String input = address.getText().toString();
-                        String[] host = input.split(":");
-                        if (host.length > 1) {
-                            BackgroundThread.setNode(new Node(host[0], host[1]));
-                        } else {
-                            BackgroundThread.setNode(new Node(host[0]));
-                        }
+                    String[] host = input.split(":");
+                    if (host.length > 1) {
+                        BackgroundThread.setNode(new Node(host[0], host[1]));
+                    } else {
+                        BackgroundThread.setNode(new Node(host[0]));
+                    }
                     address.setEnabled(false);
                     address.setText(null);
                     address.setVisibility(View.GONE);
@@ -356,20 +353,12 @@ public class ButtonActions extends AppCompatActivity {
                     ok.setVisibility(View.GONE);
                     rv.setVisibility(View.VISIBLE);
                     configure.setVisibility(View.VISIBLE);
-                    if(BackgroundThread.path!=null) {
-                        thread = new BackgroundThread();
-                        thread.start();
-                        BackgroundThread.queueWallet(BackgroundThread.path);
-                    }
                 }
             }
         });
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(thread.isRunning) {
-                    thread.interrupt();
-                }
                 BackgroundThread.setNode(Node.pickRandom());
                 address.setEnabled(false);
                 address.setText(null);
@@ -378,11 +367,6 @@ public class ButtonActions extends AppCompatActivity {
                 ok.setVisibility(View.GONE);
                 rv.setVisibility(View.VISIBLE);
                 configure.setVisibility(View.VISIBLE);
-                if(BackgroundThread.path!=null) {
-                    thread = new BackgroundThread();
-                    thread.start();
-                    BackgroundThread.queueWallet(BackgroundThread.path);
-                }
             }
         });
     }

@@ -49,6 +49,7 @@ public class Node {
     }
     public Node(String hostAddress, String port) {
         Log.v(TAG, "Node");
+        this.version=-1;
         this.hostAddress = hostAddress;
         this.hostPort = port;
     }

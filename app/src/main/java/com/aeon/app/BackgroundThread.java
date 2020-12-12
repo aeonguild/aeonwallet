@@ -204,7 +204,10 @@ public class BackgroundThread extends Thread{
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_seed"), wallet.seed));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_secret_spend_key"), wallet.secretSpendKey));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_secret_view_key"), wallet.secretViewKey));
-        NodeContent.updateItem(MainActivity.getString("row_node_version"),String.valueOf(wallet.node.version));Handler handler = new Handler(Looper.getMainLooper());
+        if(wallet.node!=null && wallet.node.version!=-1) {
+            NodeContent.updateItem(MainActivity.getString("row_node_version"), String.valueOf(wallet.node.version));
+        }
+        Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
             public void run() {
