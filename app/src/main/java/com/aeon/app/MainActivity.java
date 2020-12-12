@@ -19,6 +19,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,6 +28,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.aeon.app.irc.IRCMessageLoop;
 import com.aeon.app.models.Node;
 import com.aeon.app.ui.contact.ContactContent;
 import com.aeon.app.ui.wallet.WalletContent;
@@ -42,13 +45,11 @@ public class MainActivity extends ButtonActions {
     public static Group group_main_on;
     public static Group group_main_off;
     public static MenuItem button_wallet;
+    public static IRCMessageLoop ircClient;
     public static MenuItem button_node;
     public static Button button_transfer;
     public static Button button_contacts;
     public static Button button_recents;
-    public static ImageView image_transfer;
-    public static ImageView image_recents;
-    public static ImageView image_contacts;
     public static Resources res;
     public static String packageName;
 
@@ -63,16 +64,21 @@ public class MainActivity extends ButtonActions {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ircClient = new IRCMessageLoop();
+                ircClient.run();
+            }
+        }).start();
+
         group_main_on = findViewById(R.id.group_main_on);
         group_main_off = findViewById(R.id.group_main_off);
         layout_bottom_nav = MainActivity.this.findViewById(R.id.layout_bottom_nav);
         button_transfer = ((Button) findViewById(R.id.button_transfer));
         button_contacts =((Button) findViewById(R.id.button_contacts));
         button_recents =((Button) findViewById(R.id.button_recents));
-        image_transfer = findViewById(R.id.image_transfer);
-        image_recents = findViewById(R.id.image_recents);
-        image_contacts = findViewById(R.id.image_contacts);
         res = getResources();
         packageName = getPackageName();
 

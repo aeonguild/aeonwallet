@@ -25,11 +25,11 @@
     <TextView
         android:id="@+id/title_blog"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:maxLines="2"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/image_blog"
         app:layout_constraintStart_toStartOf="@+id/image_blog"
         app:layout_constraintTop_toBottomOf="@+id/image_blog" />

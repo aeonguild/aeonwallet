@@ -51,7 +51,7 @@
             android:onClick="confirmTransaction"
             android:text="@string/button_confirm"
             android:textAlignment="viewStart"
-            android:theme="@style/Button.On"
+            android:padding="16dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/text_transfer_password"
             app:layout_constraintStart_toStartOf="@+id/text_transfer_password"

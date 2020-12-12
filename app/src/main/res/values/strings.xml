@@ -36,7 +36,7 @@
     <string name="row_wallet_status">Status</string>
     <string name="row_wallet_synchronized">Synchronized</string>
     <string name="row_wallet_transaction_count">Transaction Count</string>
-    <string name="title_aeon_news">Aeon Community News</string>
+    <string name="title_aeon_news">Aeon Community</string>
     <string name="title_contacts">Contacts</string>
     <string name="title_mnemonic_seed_phrase">Mnemonic Seed Phrase</string>
     <string name="title_new_wallet">New Wallet</string>

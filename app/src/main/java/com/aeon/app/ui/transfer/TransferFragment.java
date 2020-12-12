@@ -77,12 +77,6 @@ public class TransferFragment extends Fragment {
             transferGroup.setVisibility(View.GONE);
             onboardGroup.setVisibility(View.VISIBLE);
         }
-        MainActivity.button_transfer.setTextAppearance(R.style.Button_Selected);
-        MainActivity.button_contacts.setTextAppearance(R.style.Button_Unselected);
-        MainActivity.button_recents.setTextAppearance(R.style.Button_Unselected);
-        MainActivity.image_transfer.setVisibility(View.VISIBLE);
-        MainActivity.image_contacts.setVisibility(View.GONE);
-        MainActivity.image_recents.setVisibility(View.GONE);
         if(text_available!=null) {
             text_available.setText(available);
             text_balance.setText(balance);

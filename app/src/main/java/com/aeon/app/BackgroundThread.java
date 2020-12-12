@@ -68,10 +68,6 @@ public class BackgroundThread extends Thread{
                     if(sleepCount%100==0) {
                         refreshWalletInfo();
                         refreshNode();
-                    }
-                    if(sleepCount%100==0) {
-                        refreshWalletInfo();
-                        refreshNode();
                         clearTransactionQueue();
                     }
                 }
@@ -133,8 +129,8 @@ public class BackgroundThread extends Thread{
         }
     }
     public static void disposeTransaction(){
-        Log.v(TAG, "disposeTransaction");
         if(pendingTransaction!=null) {
+            Log.v(TAG, "disposeTransaction");
             pendingTransaction.isDisposedByUser = true;
         }
     }
@@ -248,7 +244,7 @@ public class BackgroundThread extends Thread{
         handler.post(new Runnable() {
             @Override
             public void run() {
-                TransferFragment.updateWalletInfo(wallet.unlockedBalance.toPlainString(),wallet.balance.toPlainString());
+                TransferFragment.updateWalletInfo(wallet.unlockedBalance.toPlainString(),"("+wallet.balance.toPlainString()+")");
                 ReceiveFragment.updateAddress(wallet.address);
             }
         });

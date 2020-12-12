@@ -26,10 +26,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.aeon.app.R;
+import com.aeon.app.ui.contact.ContactAdapter;
+import com.aeon.app.ui.contact.ContactContent;
 
 public class SendFragment extends Fragment {
+    public static ContactAdapter contactAdapter;
     private EditText recipient;
     private CheckBox check_payment_id;
     private EditText text_payment_id;
@@ -52,6 +57,11 @@ public class SendFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_send, container, false);
+        Context context = view.getContext();
+        RecyclerView rv = view.findViewById(R.id.rv_send_contact_list);
+        rv.setLayoutManager(new GridLayoutManager(context, 1));
+        contactAdapter = new ContactAdapter(ContactContent.ITEMS);
+        rv.setAdapter(contactAdapter);
         recipient = (EditText)view.findViewById(R.id.transfer_recipient_info);
         check_payment_id = (CheckBox)view.findViewById(R.id.check_payment_id);
         text_payment_id = (EditText)view.findViewById(R.id.text_payment_id);
