@@ -27,6 +27,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.aeon.app.irc.IRCMessageLoop;
 import com.aeon.app.models.Node;
@@ -45,7 +47,6 @@ public class MainActivity extends ButtonActions {
     public static Group group_main_on;
     public static Group group_main_off;
     public static MenuItem button_wallet;
-    public static IRCMessageLoop ircClient;
     public static MenuItem button_node;
     public static Button button_transfer;
     public static Button button_contacts;
@@ -57,7 +58,6 @@ public class MainActivity extends ButtonActions {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         getSupportActionBar().setElevation(0);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_transfer, R.id.navigation_contact, R.id.navigation_recent)
@@ -65,13 +65,6 @@ public class MainActivity extends ButtonActions {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ircClient = new IRCMessageLoop();
-                ircClient.run();
-            }
-        }).start();
 
         group_main_on = findViewById(R.id.group_main_on);
         group_main_off = findViewById(R.id.group_main_off);

@@ -76,7 +76,6 @@ public class BlogContent {
                         Matcher m = p.matcher(content);
                         if(m.find()){
                             img = getBitmapFromURL(m.group(1));
-                            System.out.println(m.group(1));
                         }
                     }
                     else if ("link".equals(childNode.getNodeName())) {
