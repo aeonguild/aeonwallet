@@ -312,6 +312,7 @@ public class ButtonActions extends AppCompatActivity {
                 if(password.getText().toString().equals(getPassword())){
                     WalletFragment.closeWalletView(walletFragmentLayout);
                     thread.interrupt();
+                    clearPath();
                 } else {
                     WalletFragment.openWalletView(walletFragmentLayout);
                 }
@@ -425,6 +426,13 @@ public class ButtonActions extends AppCompatActivity {
                 confirm.setVisibility(View.GONE);
             }
         });
+    }
+
+    public void clearPath(){
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("path", null);
+        editor.apply();
     }
     public void setPassword(String password){
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
