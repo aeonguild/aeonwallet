@@ -271,19 +271,21 @@ public class ButtonActions extends AppCompatActivity {
         EditText recipientInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_recipient_info);
         EditText amountInfo = (EditText)transferFragmentLayout.findViewById(R.id.transfer_amount_info);
         EditText paymentID = (EditText)transferFragmentLayout.findViewById(R.id.text_payment_id);
-        if(paymentID.getVisibility()==View.VISIBLE){
-            BackgroundThread.queueTransaction(
-                    recipientInfo.getText().toString(),
-                    (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue()),
-                    paymentID.getText().toString()
-            );
-        }else {
-            BackgroundThread.queueTransaction(
-                    recipientInfo.getText().toString(),
-                    (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
-            );
+        if(!recipientInfo.getText().toString().equals("")&&!amountInfo.getText().toString().equals("")) {
+            if (paymentID.getVisibility() == View.VISIBLE) {
+                BackgroundThread.queueTransaction(
+                        recipientInfo.getText().toString(),
+                        (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue()),
+                        paymentID.getText().toString()
+                );
+            } else {
+                BackgroundThread.queueTransaction(
+                        recipientInfo.getText().toString(),
+                        (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
+                );
+            }
+            goToTransactionPendingFragment(v);
         }
-        goToTransactionPendingFragment(v);
     }
 
     public void confirmTransaction(View v) {
