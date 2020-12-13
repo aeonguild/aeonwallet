@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aeon.app.BackgroundThread;
 import com.aeon.app.R;
 import com.aeon.app.ui.contact.ContactAdapter;
 import com.aeon.app.ui.contact.ContactContent;
@@ -42,6 +43,7 @@ public class SendFragment extends Fragment {
     @Override
     public void onResume() {
         text_payment_id.setVisibility(View.GONE);
+        BackgroundThread.disposeTransaction();
         recipient.requestFocus();
         InputMethodManager imm =
                 (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);

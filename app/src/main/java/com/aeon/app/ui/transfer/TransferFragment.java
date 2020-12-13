@@ -72,7 +72,6 @@ public class TransferFragment extends Fragment {
         if(BackgroundThread.isManaging){
             transferGroup.setVisibility(View.VISIBLE);
             onboardGroup.setVisibility(View.GONE);
-            BackgroundThread.disposeTransaction();
         } else {
             transferGroup.setVisibility(View.GONE);
             onboardGroup.setVisibility(View.VISIBLE);

@@ -42,6 +42,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.Set;
+
 public class MainActivity extends ButtonActions {
     public static ConstraintLayout layout_bottom_nav;
     public static Group group_main_on;
@@ -119,13 +121,12 @@ public class MainActivity extends ButtonActions {
     }
     private void loadContacts(){
         SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-        for(String key : sharedPref.getAll().keySet()){
+        final Set<String> keys = sharedPref.getAll().keySet();
+        for(String key : keys){
             if(!key.equals("path")&&!key.equals("password")&&!key.equals("ip")&&!key.equals("port") ){
-                if(!ContactContent.ITEMS.contains(sharedPref.getString(key , ""))) {
-                    ContactContent.addItem(
-                            new ContactContent.Contact(sharedPref.getString(key , ""), key)
-                    );
-                }
+                ContactContent.addItem(
+                        new ContactContent.Contact(sharedPref.getString(key , ""), key)
+                );
             }
         }
     }
@@ -173,15 +174,13 @@ public class MainActivity extends ButtonActions {
         } else {
             editor.putString("path", null);
         }
-        for(ContactContent.Contact c : ContactContent.ITEMS){
-            editor.putString(c.address, c.name);
-        }
         if(BackgroundThread.isConnected){
             editor.putString("ip", BackgroundThread.node.hostAddress);
             editor.putString("port", BackgroundThread.node.hostPort);
         }
         editor.commit();
     }
+
 
     public static String getString(String idName) {
         int resId = res.getIdentifier(idName, "string", packageName);

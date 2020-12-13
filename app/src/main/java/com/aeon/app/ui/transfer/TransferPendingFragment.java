@@ -58,9 +58,6 @@ public class TransferPendingFragment extends Fragment {
             public void run() {
                 while (BackgroundThread.pendingTransaction.fee==0 && !BackgroundThread.pendingTransaction.isDisposedByUser) {
                     try {
-                        System.out.println(BackgroundThread.pendingTransaction.fee);
-                        System.out.println(BackgroundThread.pendingTransaction.paymentID);
-                        System.out.println(BackgroundThread.pendingTransaction.getHandle());
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();

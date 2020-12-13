@@ -81,7 +81,9 @@ public class ButtonActions extends AppCompatActivity {
 
                         WalletContent.clearItems();
                         WalletContent.addItem(new WalletContent.Item(getResources().getString(R.string.text_loading_wallet),"" ));
-                        BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis());
+                        String path = getFilesDir().getAbsolutePath() + "/" + System.currentTimeMillis();
+                        BackgroundThread.queueWallet(path);
+                        setPreference("path",path);
                         View walletFragmentLayout = findViewById(R.id.layout_wallet);
                         WalletFragment.openWalletView(walletFragmentLayout);
                         ConstraintLayout layout = findViewById(R.id.layout_seed_input);
@@ -109,7 +111,7 @@ public class ButtonActions extends AppCompatActivity {
         ConstraintLayout seedLayout = findViewById(R.id.layout_seed_input);
         MultiAutoCompleteTextView textView = seedLayout.findViewById(R.id.text_seed_input);
         EditText editText = seedLayout.findViewById(R.id.text_restore_height);
-        if(!editText.getText().toString().equals("") && ! textView.getText().toString().equals("")) {
+        if(!editText.getText().toString().equals("") && !textView.getText().toString().equals("")) {
             String seed = textView.getText().toString();
             int restoreHeight = Integer.parseInt(editText.getText().toString());
             if (thread == null || !thread.isRunning) {
@@ -136,7 +138,9 @@ public class ButtonActions extends AppCompatActivity {
                             thread.start();
                             WalletContent.clearItems();
                             WalletContent.addItem(new WalletContent.Item(getResources().getString(R.string.text_loading_wallet),"" ));
-                            BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis(), seed, restoreHeight);
+                            String path = getFilesDir().getAbsolutePath() + "/" + System.currentTimeMillis();
+                            BackgroundThread.queueWallet(path, seed, restoreHeight);
+                            setPreference("path",path);
                             View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
                             WalletFragment.openWalletView(walletFragmentLayout);
                             ConstraintLayout layout = findViewById(R.id.layout_seed_input);
@@ -201,7 +205,9 @@ public class ButtonActions extends AppCompatActivity {
                             thread.start();
                             WalletContent.clearItems();
                             WalletContent.addItem(new WalletContent.Item(getResources().getString(R.string.text_loading_wallet),"" ));
-                            BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis(), account,view,spend, restoreHeight);
+                            String path = getFilesDir().getAbsolutePath() + "/" + System.currentTimeMillis();
+                            BackgroundThread.queueWallet(path, account,view,spend, restoreHeight);
+                            setPreference("path",path);
                             View walletFragmentLayout = (ConstraintLayout) findViewById(R.id.layout_wallet);
                             WalletFragment.openWalletView(walletFragmentLayout);
                             ConstraintLayout layout = findViewById(R.id.layout_seed_input);
@@ -385,10 +391,13 @@ public class ButtonActions extends AppCompatActivity {
         address.setVisibility(View.VISIBLE);
         add.setVisibility(View.VISIBLE);
         rv.setVisibility(View.GONE);
+        label.requestFocus();
+        showKeyboard();
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!label.getText().toString().equals("") && !address.getText().toString().equals("")) {
+                    setPreference(address.getText().toString(),label.getText().toString());
                     ContactContent.addItem(new ContactContent.Contact(
                             label.getText().toString(),
                             address.getText().toString()));
@@ -419,7 +428,7 @@ public class ButtonActions extends AppCompatActivity {
                 if(password.getText().toString().equals(getPassword())){
                     WalletFragment.openWalletView(walletFragmentLayout);
                     WalletFragment.walletAdapter.showSecretInfo();
-                    Toast toast = Toast.makeText(getApplicationContext(), "Secret info visible in table above..", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Secret info visible above.", Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Wrong password.", Toast.LENGTH_SHORT);
@@ -435,16 +444,16 @@ public class ButtonActions extends AppCompatActivity {
     }
 
     public void clearPath(){
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("path", null);
-        editor.apply();
+        setPreference("path",null);
     }
     public void setPassword(String password){
+        ButtonActions.password = password;
+        setPreference("password",password);
+    }
+    public void setPreference(String key,String value){
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("password",password);
-        ButtonActions.password = password;
+        editor.putString(key,value);
         editor.apply();
     }
     public static String getPassword(){

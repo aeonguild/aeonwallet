@@ -48,6 +48,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        holder.setIsRecyclable(false);
         holder.mItem = mValues.get(position);
         holder.mNameView.setText(mValues.get(position).name);
         String address = mValues.get(position).address;
