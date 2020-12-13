@@ -21,7 +21,7 @@
             android:id="@+id/group_wallet_on"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="rv_wallet_info_list,button_set_address_index,button_show_secret_info,button_delete_wallet" />
+            app:constraint_referenced_ids="rv_wallet_info_list,button_show_secret_info,button_delete_wallet" />
 
         <include
             android:id="@+id/rv_wallet_info_list"
@@ -67,44 +67,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <NumberPicker
-            android:id="@+id/numberpicker_main_picker"
-            style="@android:style/Widget.Material.NumberPicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corners"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button_address_ok"
-            style="@style/Widget.AppCompat.Button.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/button_ok"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/numberpicker_main_picker"
-            app:layout_constraintStart_toStartOf="@+id/numberpicker_main_picker"
-            app:layout_constraintTop_toBottomOf="@+id/numberpicker_main_picker" />
-
-        <TextView
-            android:id="@+id/text_address_index_help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corners"
-            android:padding="8dp"
-            android:text="@string/text_new_address"
-            android:textSize="24sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/numberpicker_main_picker"
-            app:layout_constraintEnd_toEndOf="@+id/numberpicker_main_picker"
-            app:layout_constraintStart_toStartOf="@+id/numberpicker_main_picker"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button_confirm_delete"
@@ -185,31 +147,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_set_address_index"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:onClick="setAddressIndex"
-            android:text="@string/button_set_address_index"
-            android:padding="16dp"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toTopOf="@+id/button_delete_wallet"
-            app:layout_constraintEnd_toEndOf="@+id/button_show_secret_info"
-            app:layout_constraintStart_toStartOf="@+id/button_show_secret_info"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp" />
-
-        <Button
             android:id="@+id/button_delete_wallet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:onClick="removeWallet"
-            android:text="@string/button_delete_wallet"
             android:padding="16dp"
+            android:text="@string/button_delete_wallet"
             android:textAlignment="textStart"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/button_set_address_index"
-            app:layout_constraintStart_toStartOf="@+id/button_set_address_index"
+            app:layout_constraintEnd_toEndOf="@+id/button_show_secret_info"
+            app:layout_constraintStart_toStartOf="@+id/button_show_secret_info"
             tools:layout_conversion_absoluteHeight="0dp"
             tools:layout_conversion_absoluteWidth="0dp" />
 
@@ -218,10 +166,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="showSecretInfo"
+            android:padding="16dp"
             android:text="@string/button_show_secret_info"
             android:textAlignment="textStart"
-            android:padding="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_set_address_index"
+            app:layout_constraintBottom_toTopOf="@+id/button_delete_wallet"
             app:layout_constraintEnd_toEndOf="@+id/rv_wallet_info_list"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/rv_wallet_info_list"

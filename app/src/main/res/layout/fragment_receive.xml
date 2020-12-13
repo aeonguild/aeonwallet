@@ -7,24 +7,11 @@
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/background_coins"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/text_address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_label_coins"
-        app:srcCompat="@drawable/corners" />
-
     <TextView
         android:id="@+id/text_label_coins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:text="@string/row_wallet_address"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textSize="18sp"
@@ -36,8 +23,8 @@
         android:id="@+id/text_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:selectAllOnFocus="true"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textIsSelectable="true"
@@ -46,18 +33,27 @@
         app:layout_constraintStart_toStartOf="@+id/text_label_coins"
         app:layout_constraintTop_toBottomOf="@+id/text_label_coins" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/text_address_index_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_new_address"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/text_label_coins"
+        app:layout_constraintTop_toBottomOf="@+id/text_address" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:padding="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@android:string/copy"
+        android:entries="@array/indices"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_address" />
+        app:layout_constraintTop_toBottomOf="@+id/text_address_index_help" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

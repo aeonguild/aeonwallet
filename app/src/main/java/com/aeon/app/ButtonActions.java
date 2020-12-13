@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -77,6 +78,7 @@ public class ButtonActions extends AppCompatActivity {
                         thread = new BackgroundThread();
                         thread.start();
                         goToNewWalletFragment(v);
+
                         WalletContent.clearItems();
                         WalletContent.addItem(new WalletContent.Item(getResources().getString(R.string.text_loading_wallet),"" ));
                         BackgroundThread.queueWallet(getFilesDir().getAbsolutePath() + "/wallet" + System.currentTimeMillis());
@@ -87,6 +89,8 @@ public class ButtonActions extends AppCompatActivity {
                         layout = findViewById(R.id.layout_keys_input);
                         layout.setVisibility(View.GONE);
                     } else {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT);
+                        toast.show();
                         WalletFragment.closeWalletView(walletFragmentLayout);
                     }
                     hideKeyboard();
@@ -139,7 +143,11 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Wallet created.", Toast.LENGTH_SHORT);
+                            toast.show();
                         } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT);
+                            toast.show();
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
                         hideKeyboard();
@@ -200,7 +208,11 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Wallet created.", Toast.LENGTH_SHORT);
+                            toast.show();
                         } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT);
+                            toast.show();
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
                         hideKeyboard();
@@ -214,29 +226,6 @@ public class ButtonActions extends AppCompatActivity {
                 });
             }
         }
-    }
-    public void setAddressIndex(View v) {
-        RecyclerView rv = findViewById(R.id.rv_wallet_info_list);
-        NumberPicker index = findViewById(R.id.numberpicker_main_picker);
-        TextView help = findViewById(R.id.text_address_index_help);
-        Button ok = findViewById(R.id.button_address_ok);
-        index.setVisibility(View.VISIBLE);
-        index.setMaxValue(500);
-        index.setMinValue(0);
-        index.setWrapSelectorWheel(false);
-        ok.setVisibility(View.VISIBLE);
-        help.setVisibility(View.VISIBLE);
-        rv.setVisibility(View.GONE);
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BackgroundThread.setAddressIndex(index.getValue());
-                index.setVisibility(View.GONE);
-                ok.setVisibility(View.GONE);
-                help.setVisibility(View.GONE);
-                rv.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
 
@@ -293,6 +282,11 @@ public class ButtonActions extends AppCompatActivity {
         Button confirm = findViewById(R.id.button_confirm_send);
         if(password.getText().toString().equals(getPassword())){
             BackgroundThread.confirmTransaction();
+            Toast toast = Toast.makeText(getApplicationContext(), "Transaction submitted.", Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "Wrong password.", Toast.LENGTH_SHORT);
+            toast.show();
         }
         password.setText("");
         confirm.setVisibility(View.GONE);
@@ -315,7 +309,11 @@ public class ButtonActions extends AppCompatActivity {
                     WalletFragment.closeWalletView(walletFragmentLayout);
                     thread.interrupt();
                     clearPath();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Wallet destroyed.", Toast.LENGTH_SHORT);
+                    toast.show();
                 } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong password.", Toast.LENGTH_SHORT);
+                    toast.show();
                     WalletFragment.openWalletView(walletFragmentLayout);
                 }
                 hideKeyboard();
@@ -421,7 +419,11 @@ public class ButtonActions extends AppCompatActivity {
                 if(password.getText().toString().equals(getPassword())){
                     WalletFragment.openWalletView(walletFragmentLayout);
                     WalletFragment.walletAdapter.showSecretInfo();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Secret info visible in table above..", Toast.LENGTH_SHORT);
+                    toast.show();
                 } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong password.", Toast.LENGTH_SHORT);
+                    toast.show();
                     WalletFragment.openWalletView(walletFragmentLayout);
                 }
                 hideKeyboard();

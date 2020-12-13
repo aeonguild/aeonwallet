@@ -4,10 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.aeon.app.BackgroundThread;
 import com.aeon.app.R;
 
 /*
@@ -27,7 +33,9 @@ limitations under the License.
 */
 public class ReceiveFragment extends Fragment {
     public static TextView text_address;
+    public static Spinner spinner;
     public static String address = "" ;
+    public static int index = 0;
 
     @Override
     public void onResume() {
@@ -46,6 +54,19 @@ public class ReceiveFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_receive, container, false);
         text_address = view.findViewById(R.id.text_address);
+        spinner = view.findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                setAddressIndex(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner.setSelection(index);
         return view;
     }
 
@@ -54,5 +75,9 @@ public class ReceiveFragment extends Fragment {
         if(text_address!=null) {
             text_address.setText(address);
         }
+    }
+    public void setAddressIndex(int index) {
+        this.index = index;
+        BackgroundThread.setAddressIndex(index);
     }
 }
