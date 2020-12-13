@@ -8,10 +8,6 @@
 
 An original android wallet app built for Aeon. Connect to a node, load your wallet, and send coins. 
 
-## What is Aeon?
-
-Aeon is a cryptocurrency based on the Cryptonote Protocol. It is intended to be a minimal implementation with a goal of less encryption bloat and faster hashing algorithms ([KangarooTwelve](https://keccak.team/kangarootwelve.html)) while maintining the same private transactions and balances. Find more information https://github.com/aeonix/aeon.
-
 ## Download.
 
 Find the apk files in https://github.com/ivoryguru/aeonwallet/tree/main/app/release. Most android phones will use the `app-arm64-v8a-release.apk`.
@@ -33,6 +29,10 @@ After this is all completed, you will be able to open the app in Android Studio 
 Please report any issues using the app. 
 Also, help translating and adding reliable nodes is appreciated. 
 Translations available for 中文 aeon wallet.
+
+## What is Aeon?
+
+Aeon is a cryptocurrency based on the Cryptonote Protocol. It is intended to be a minimal implementation with a goal of less encryption bloat and faster hashing algorithms ([KangarooTwelve](https://keccak.team/kangarootwelve.html)) while maintining the same private transactions and balances. Find more information https://github.com/aeonix/aeon.
 
 ## Thanks.
 
