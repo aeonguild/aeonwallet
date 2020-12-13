@@ -8,6 +8,8 @@
 
 An original android wallet app built for Aeon. Connect to a node, load your wallet, and send coins. 
 
+Be aware: this library is Apache licensed. By using it, you agree with the terms of that license. In particular pay attention to section 7 and 8, which assert there is NO WARRANTY that this library is safe to use or bug free, and in fact that by using this code you accept that none of the contributors shall be liable for any damages or monetary loss that results from your use of their code, even if due to bugs in that code. In short, according to the license the library is distributed under, there are no situations in which you could sue any of the developers (it's as if you wrote the entire library yourself). If you can't handle that, don't use this library.
+
 ## Download.
 
 Find the apk files in https://github.com/ivoryguru/aeonwallet/tree/main/app/release. Most android phones will use the `app-arm64-v8a-release.apk`.
