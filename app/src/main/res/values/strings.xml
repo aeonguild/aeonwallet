@@ -36,7 +36,7 @@
     <string name="row_wallet_status">Status</string>
     <string name="row_wallet_synchronized">Synchronized</string>
     <string name="row_wallet_transaction_count">Transaction Count</string>
-    <string name="title_aeon_news">Aeon Community</string>
+    <string name="title_aeon_news">Aeon Community Updates</string>
     <string name="title_contacts">Contacts</string>
     <string name="title_mnemonic_seed_phrase">Mnemonic Seed Phrase</string>
     <string name="title_new_wallet">New Wallet</string>
@@ -49,7 +49,7 @@
     <string name="text_unknown">...</string>
     <string name="text_account_address">Account address</string>
     <string name="text_amount">Amount</string>
-    <string name="text_confirm_password">Confirm Password</string>
+    <string name="text_confirm_pin">Confirm Phone PIN</string>
     <string name="text_contact_hint_name">Contact Name</string>
     <string name="text_contact_hint_address">Contact Address</string>
     <string name="text_create">Create</string>
@@ -58,8 +58,8 @@
     <string name="text_loading_wallet">Loading Wallet...</string>
     <string name="text_new_address">Choose a new address index</string>
     <string name="text_open_a_wallet_to_begin">Open a wallet to begin!</string>
-    <string name="text_password">Password</string>
-    <string name="text_password_description">This password is used to secure your wallet only on this
+    <string name="text_pin">Phone PIN</string>
+    <string name="text_pin_description">This PIN is used to secure your wallet only on this
         device.</string>
     <string name="text_recipient_address">Recipient Address</string>
     <string name="text_restore_height">Restore Height</string>

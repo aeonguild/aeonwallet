@@ -49,7 +49,7 @@
     <string name="text_unknown">...</string>
     <string name="text_account_address">账户</string>
     <string name="text_amount">数额</string>
-    <string name="text_confirm_password">确认密码</string>
+    <string name="text_confirm_pin">确认密码</string>
     <string name="text_contact_hint_name">联系人姓名</string>
     <string name="text_contact_hint_address">联系人地址</string>
     <string name="text_create">创建</string>
@@ -58,8 +58,8 @@
     <string name="text_loading_wallet">钱包加载中...</string>
     <string name="text_new_address">选择新钱包索引</string>
     <string name="text_open_a_wallet_to_begin">您可以打开钱包开始使用!</string>
-    <string name="text_password">密码</string>
-    <string name="text_password_description">此密码仅用于在此应用上加密您的钱包。</string>
+    <string name="text_pin">密码</string>
+    <string name="text_pin_description">此密码仅用于在此应用上加密您的钱包。</string>
     <string name="text_recipient_address">接收人地址</string>
     <string name="text_requires_payment_id">Payment ID</string>
     <string name="text_restore_height">创建时高度</string>
