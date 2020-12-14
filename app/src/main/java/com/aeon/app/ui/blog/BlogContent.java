@@ -56,41 +56,43 @@ public class BlogContent {
             } catch (SAXException e) {
                 e.printStackTrace();
             }
-            NodeList blogs = doc.getElementsByTagName("item");
-            for (int temp = 0; temp < blogs.getLength(); temp++) {
-                Node blog = blogs.item(temp);
-                NodeList childList = blog.getChildNodes();
-                Bitmap img = null;
-                String title = null;
-                String url = null;
-                Boolean isBlogPost = false;
-                for (int temp2 = 0; temp2 < childList.getLength(); temp2++) {
-                    Node childNode = childList.item(temp2);
-                    if ("title".equals(childNode.getNodeName())) {
-                        title= childList.item(temp2).getTextContent();
-                    }
-                    else if ("content:encoded".equals(childNode.getNodeName())) {
-                        String pattern = "<img alt=\"[^\"]*\" src=\"([^\"]+)\" \\/>";
-                        String content = childList.item(temp2).getTextContent();
-                        Pattern p = Pattern.compile(pattern);
-                        Matcher m = p.matcher(content);
-                        if(m.find()){
-                            img = getBitmapFromURL(m.group(1));
+            if(doc!=null){
+                NodeList blogs = doc.getElementsByTagName("item");
+                for (int temp = 0; temp < blogs.getLength(); temp++) {
+                    Node blog = blogs.item(temp);
+                    NodeList childList = blog.getChildNodes();
+                    Bitmap img = null;
+                    String title = null;
+                    String url = null;
+                    Boolean isBlogPost = false;
+                    for (int temp2 = 0; temp2 < childList.getLength(); temp2++) {
+                        Node childNode = childList.item(temp2);
+                        if ("title".equals(childNode.getNodeName())) {
+                            title= childList.item(temp2).getTextContent();
+                        }
+                        else if ("content:encoded".equals(childNode.getNodeName())) {
+                            String pattern = "<img alt=\"[^\"]*\" src=\"([^\"]+)\" \\/>";
+                            String content = childList.item(temp2).getTextContent();
+                            Pattern p = Pattern.compile(pattern);
+                            Matcher m = p.matcher(content);
+                            if(m.find()){
+                                img = getBitmapFromURL(m.group(1));
+                            }
+                        }
+                        else if ("link".equals(childNode.getNodeName())) {
+                            url =childList.item(temp2).getTextContent();
+                        }
+                        else if ("category".equals(childNode.getNodeName())) {
+                            isBlogPost = true;
                         }
                     }
-                    else if ("link".equals(childNode.getNodeName())) {
-                        url =childList.item(temp2).getTextContent();
+                    if(title!=null && isBlogPost) {
+                        ITEMS.add(new Blog(title, url, img));
                     }
-                    else if ("category".equals(childNode.getNodeName())) {
-                        isBlogPost = true;
-                    }
-                }
-                if(title!=null && isBlogPost) {
-                    ITEMS.add(new Blog(title, url, img));
                 }
             }
         }
-        }).start();
+            }).start();
     }
     public static class Blog {
         public final String name;

@@ -35,7 +35,7 @@ import com.aeon.app.ui.contact.ContactAdapter;
 import com.aeon.app.ui.contact.ContactContent;
 
 public class SendFragment extends Fragment {
-    public static ContactAdapter contactAdapter;
+    public static ContactAdapter contactAdapter=null;
     private EditText recipient;
     private CheckBox check_payment_id;
     private EditText text_payment_id;
@@ -62,7 +62,9 @@ public class SendFragment extends Fragment {
         Context context = view.getContext();
         RecyclerView rv = view.findViewById(R.id.rv_send_contact_list);
         rv.setLayoutManager(new GridLayoutManager(context, 1));
-        contactAdapter = new ContactAdapter(ContactContent.ITEMS);
+        if(contactAdapter ==null) {
+            contactAdapter = new ContactAdapter(ContactContent.ITEMS);
+        }
         rv.setAdapter(contactAdapter);
         recipient = (EditText)view.findViewById(R.id.transfer_recipient_info);
         check_payment_id = (CheckBox)view.findViewById(R.id.check_payment_id);

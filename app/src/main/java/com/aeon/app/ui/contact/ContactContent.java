@@ -15,6 +15,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import com.aeon.app.ui.transfer.SendFragment;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +32,9 @@ public class ContactContent {
         ITEM_MAP.put(item.name, item);
         if(ContactFragment.contactAdapter!=null) {
             ContactFragment.contactAdapter.notifyDataSetChanged();
+        }
+        if(SendFragment.contactAdapter!=null) {
+            SendFragment.contactAdapter.notifyDataSetChanged();
         }
     }
 

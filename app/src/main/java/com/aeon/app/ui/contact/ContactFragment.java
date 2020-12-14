@@ -33,7 +33,7 @@ import com.aeon.app.R;
  * A fragment representing a list of Items.
  */
 public class ContactFragment extends Fragment {
-    public static ContactAdapter contactAdapter;
+    public static ContactAdapter contactAdapter = null;
 
     public ContactFragment() {
     }
@@ -51,7 +51,9 @@ public class ContactFragment extends Fragment {
         Context context = view.getContext();
         RecyclerView rv = view.findViewById(R.id.rv_contact_item_list);
         rv.setLayoutManager(new GridLayoutManager(context, 1));
-        contactAdapter = new ContactAdapter(ContactContent.ITEMS);
+        if(contactAdapter ==null) {
+            contactAdapter = new ContactAdapter(ContactContent.ITEMS);
+        }
         rv.setAdapter(contactAdapter);
         return view;
     }
