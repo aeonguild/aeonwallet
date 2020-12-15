@@ -194,6 +194,7 @@ public class BackgroundThread extends Thread{
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_balance_total"), MainActivity.getString("text_unknown")));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_balance_spendable"), MainActivity.getString("text_unknown")));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_synchronized"), String.valueOf(wallet.isSynchronized)));
+        WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_synchronized_height"), String.valueOf(wallet.height)));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_status"), String.valueOf(wallet.status)));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_path"), wallet.path));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_transaction_count"), MainActivity.getString("text_unknown")));
@@ -213,6 +214,7 @@ public class BackgroundThread extends Thread{
                 ReceiveFragment.updateAddress(MainActivity.getString("text_unknown"));
             }
         });
+
     }
     private void connectToNode(){
         Log.v(TAG, "connectToNode");
@@ -240,6 +242,7 @@ public class BackgroundThread extends Thread{
         WalletContent.updateItem(MainActivity.getString("row_wallet_balance_spendable"), wallet.unlockedBalance.toPlainString());
         WalletContent.updateItem(MainActivity.getString("row_wallet_synchronized"), String.valueOf(wallet.isSynchronized));
         WalletContent.updateItem(MainActivity.getString("row_wallet_status"), String.valueOf(wallet.status));
+        WalletContent.updateItem(MainActivity.getString("row_wallet_synchronized_height"), String.valueOf(wallet.height));
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override

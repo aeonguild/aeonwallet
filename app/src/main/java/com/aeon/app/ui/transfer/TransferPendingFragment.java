@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -36,6 +37,7 @@ import java.math.BigDecimal;
 
 public class TransferPendingFragment extends Fragment {
     private TextView text_transfer_info;
+    private ProgressBar progressBar;
     private Button understood;
     public TransferPendingFragment() {
     }
@@ -52,22 +54,31 @@ public class TransferPendingFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_transaction_pending, container, false);
         text_transfer_info = (TextView) v.findViewById(R.id.text_transfer_info);
+        progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
+        progressBar.setProgress(0);
         understood = v.findViewById(R.id.button_confirm_send);
         new Thread(new Runnable() {
             @Override
             public void run() {
+                int i = 0;
+                i += 10;
+                progressBar.setProgress(i);
                 while (BackgroundThread.pendingTransaction.fee==0 && !BackgroundThread.pendingTransaction.isDisposedByUser) {
                     try {
                         Thread.sleep(1000);
+                        i+=5;
+                        progressBar.setProgress(Math.min(i,60));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                progressBar.setProgress(80);
                 if(BackgroundThread.pendingTransaction!= null && !BackgroundThread.pendingTransaction.isDisposedByUser){
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            progressBar.setProgress(90);
                             text_transfer_info.setText(
                                     MainActivity.getString("text_transaction_you_are_sending") +" "
                                             +BigDecimal.valueOf(BackgroundThread.pendingTransaction.amount).movePointLeft(12).toPlainString()

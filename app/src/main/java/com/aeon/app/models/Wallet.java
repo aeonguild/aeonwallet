@@ -41,6 +41,8 @@ public class Wallet {
     public String publicViewKey;
     public String secretSpendKey;
     public String secretViewKey;
+    public long height;
+    public long heightEstimate;
     public ConnectionStatus connectionStatus;
     public Status status;
     public Node node;
@@ -157,20 +159,26 @@ public class Wallet {
         address = getAddressJNI(0,index);
         balance = new BigDecimal(getBalanceJNI(0)).movePointLeft(12);
         unlockedBalance = new BigDecimal(getUnlockedBalanceJNI(0)).movePointLeft(12);
-        transactionHistory.getCount();
-        if(transactionHistory.count > transactions.size()) {
-            storeJNI("");
+        if(isSynchronized) {
+            transactionHistory.getCount();
+            if (transactionHistory.count > transactions.size()) {
+                storeJNI("");
+            }
         }
         connectionStatus = ConnectionStatus.values()[getConnectionStatusJNI()];
         if(connectionStatus == ConnectionStatus.Connected) {
             startRefreshJNI();
-            transactionHistory.refresh();
-            transactions.clear();
-            while (transactionHistory.count > transactions.size()) {
-                transactions.add(transactionHistory.getTransaction(transactions.size()));
+            if(isSynchronized) {
+                transactionHistory.refresh();
+                transactions.clear();
+                while (transactionHistory.count > transactions.size()) {
+                    transactions.add(transactionHistory.getTransaction(transactions.size()));
+                }
             }
             node.height = getDaemonBlockChainHeightJNI();
             node.target = getDaemonBlockChainTargetHeightJNI();
+            this.height = getBlockChainHeightJNI();
+            this.heightEstimate = getBlockChainHeightEstimateJNI();
             node.version = getDaemonVersionJNI();
         }
     }
@@ -199,6 +207,8 @@ public class Wallet {
     private native int getConnectionStatusJNI();
     private native long getDaemonBlockChainHeightJNI();
     private native long getDaemonBlockChainTargetHeightJNI();
+    private native long getBlockChainHeightJNI();
+    private native long getBlockChainHeightEstimateJNI();
     private native int getDaemonVersionJNI();
     private native String getPublicSpendKeyJNI();
     private native String getPublicViewKeyJNI();

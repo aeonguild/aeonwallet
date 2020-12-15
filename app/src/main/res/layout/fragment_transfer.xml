@@ -31,6 +31,8 @@
             android:id="@+id/text_onboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             android:fontFamily="sans-serif"
             android:text="@string/text_open_a_wallet_to_begin"
             android:textColor="@color/gray"

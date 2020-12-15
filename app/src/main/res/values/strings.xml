@@ -35,6 +35,7 @@
     <string name="row_wallet_secret_view_key">Secret View Key</string>
     <string name="row_wallet_status">Status</string>
     <string name="row_wallet_synchronized">Synchronized</string>
+    <string name="row_wallet_synchronized_height">Synchronized Height</string>
     <string name="row_wallet_transaction_count">Transaction Count</string>
     <string name="title_aeon_news">Aeon Community Updates</string>
     <string name="title_contacts">Contacts</string>

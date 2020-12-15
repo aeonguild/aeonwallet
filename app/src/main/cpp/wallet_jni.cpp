@@ -349,7 +349,7 @@ JNIEXPORT jlong JNICALL
 Java_com_aeon_app_models_Wallet_getDaemonBlockChainHeightJNI(
         JNIEnv *env,
         jobject instance
-    ) {
+) {
     Aeon::Wallet *wallet = getHandle<Aeon::Wallet>(env, instance);
     return wallet->daemonBlockChainHeight();
 }
@@ -358,9 +358,27 @@ JNIEXPORT jlong JNICALL
 Java_com_aeon_app_models_Wallet_getDaemonBlockChainTargetHeightJNI(
         JNIEnv *env,
         jobject instance
-    ) {
+) {
     Aeon::Wallet *wallet = getHandle<Aeon::Wallet>(env, instance);
     return wallet->daemonBlockChainTargetHeight();
+}
+
+JNIEXPORT jlong JNICALL
+Java_com_aeon_app_models_Wallet_getBlockChainHeightJNI(
+        JNIEnv *env,
+        jobject instance
+) {
+    Aeon::Wallet *wallet = getHandle<Aeon::Wallet>(env, instance);
+    return wallet->blockChainHeight();
+}
+
+JNIEXPORT jlong JNICALL
+Java_com_aeon_app_models_Wallet_getBlockChainHeightEstimateJNI(
+        JNIEnv *env,
+        jobject instance
+) {
+    Aeon::Wallet *wallet = getHandle<Aeon::Wallet>(env, instance);
+    return wallet->approximateBlockChainHeight();
 }
 
 JNIEXPORT jboolean JNICALL
