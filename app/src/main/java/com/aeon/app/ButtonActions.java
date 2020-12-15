@@ -112,7 +112,7 @@ public class ButtonActions extends AppCompatActivity {
         MultiAutoCompleteTextView textView = seedLayout.findViewById(R.id.text_seed_input);
         EditText editText = seedLayout.findViewById(R.id.text_restore_height);
         if(!editText.getText().toString().equals("") && !textView.getText().toString().equals("")) {
-            String seed = textView.getText().toString();
+            String seed = textView.getText().toString().trim();
             int restoreHeight = Integer.parseInt(editText.getText().toString());
             if (thread == null || !thread.isRunning) {
                 seedLayout.setVisibility(View.GONE);
