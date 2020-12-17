@@ -57,7 +57,7 @@
     <string name="text_creating_transaction">Creating Transaction...</string>
     <string name="text_ip_address">127.0.0.1:11181</string>
     <string name="text_loading_wallet">Loading Wallet...</string>
-    <string name="text_new_address">Choose a new address index</string>
+    <string name="text_new_address">Address index</string>
     <string name="text_open_a_wallet_to_begin">Open the wallet menu to begin!</string>
     <string name="text_pin">Phone PIN</string>
     <string name="text_pin_description">This PIN is used to secure your wallet only on this
@@ -92,5 +92,16 @@
         <item>7</item>
         <item>8</item>
         <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
     </string-array>
 </resources>
