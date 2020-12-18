@@ -30,7 +30,6 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.aeon.app.irc.IRCMessageLoop;
 import com.aeon.app.models.Node;
 import com.aeon.app.ui.contact.ContactContent;
 import com.aeon.app.ui.wallet.WalletContent;
