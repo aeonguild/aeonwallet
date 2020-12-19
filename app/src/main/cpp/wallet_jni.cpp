@@ -78,7 +78,7 @@ extern "C"
 #endif
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_createJNI(
+Java_org_aeonwallet_app_models_Wallet_createJNI(
         JNIEnv *env,
         jobject instance,
         jstring path,
@@ -103,7 +103,7 @@ Java_com_aeon_app_models_Wallet_createJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_createFromSeedJNI(
+Java_org_aeonwallet_app_models_Wallet_createFromSeedJNI(
         JNIEnv *env,
         jobject instance,
         jstring path,
@@ -130,7 +130,7 @@ Java_com_aeon_app_models_Wallet_createFromSeedJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_createFromKeysJNI(
+Java_org_aeonwallet_app_models_Wallet_createFromKeysJNI(
         JNIEnv *env,
         jobject instance,
         jstring path,
@@ -165,7 +165,7 @@ Java_com_aeon_app_models_Wallet_createFromKeysJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_openWalletJNI(
+Java_org_aeonwallet_app_models_Wallet_openWalletJNI(
         JNIEnv *env,
         jobject instance,
         jstring path,
@@ -186,7 +186,7 @@ Java_com_aeon_app_models_Wallet_openWalletJNI(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_aeon_app_models_Wallet_isExistsJNI(
+Java_org_aeonwallet_app_models_Wallet_isExistsJNI(
         JNIEnv *env,
         jobject instance,
         jstring path
@@ -199,7 +199,7 @@ Java_com_aeon_app_models_Wallet_isExistsJNI(
 }
 
 JNIEXPORT void JNICALL
-Java_com_aeon_app_models_Wallet_setDaemonAddressJNI(
+Java_org_aeonwallet_app_models_Wallet_setDaemonAddressJNI(
         JNIEnv *env,
         jobject instance,
         jstring address
@@ -210,7 +210,7 @@ Java_com_aeon_app_models_Wallet_setDaemonAddressJNI(
 }
 
 JNIEXPORT jint JNICALL
-Java_com_aeon_app_models_Wallet_getDaemonVersionJNI(
+Java_org_aeonwallet_app_models_Wallet_getDaemonVersionJNI(
         JNIEnv *env,
         jobject instance
     ) {
@@ -222,7 +222,7 @@ Java_com_aeon_app_models_Wallet_getDaemonVersionJNI(
 }
 
 JNIEXPORT jint JNICALL
-Java_com_aeon_app_models_Wallet_getStatusJNI(
+Java_org_aeonwallet_app_models_Wallet_getStatusJNI(
         JNIEnv *env,
         jobject instance
     ) {
@@ -231,7 +231,7 @@ Java_com_aeon_app_models_Wallet_getStatusJNI(
 }
 
 JNIEXPORT jint JNICALL
-Java_com_aeon_app_models_Wallet_getConnectionStatusJNI(
+Java_org_aeonwallet_app_models_Wallet_getConnectionStatusJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -241,7 +241,7 @@ Java_com_aeon_app_models_Wallet_getConnectionStatusJNI(
 
 
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_Wallet_getPathJNI(
+Java_org_aeonwallet_app_models_Wallet_getPathJNI(
         JNIEnv *env,
         jobject instance
     ) {
@@ -250,7 +250,7 @@ Java_com_aeon_app_models_Wallet_getPathJNI(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_aeon_app_models_Wallet_initJNI(
+Java_org_aeonwallet_app_models_Wallet_initJNI(
         JNIEnv *env,
         jobject instance,
         jstring daemon_address,
@@ -274,7 +274,7 @@ Java_com_aeon_app_models_Wallet_initJNI(
 }
 
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_Wallet_getSeedJNI(
+Java_org_aeonwallet_app_models_Wallet_getSeedJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -282,7 +282,7 @@ Java_com_aeon_app_models_Wallet_getSeedJNI(
     return env->NewStringUTF(wallet->seed().c_str());
 }
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_Wallet_getSecretViewKeyJNI(
+Java_org_aeonwallet_app_models_Wallet_getSecretViewKeyJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -290,7 +290,7 @@ Java_com_aeon_app_models_Wallet_getSecretViewKeyJNI(
     return env->NewStringUTF(wallet->secretViewKey().c_str());
 }
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_Wallet_getPublicViewKeyJNI(
+Java_org_aeonwallet_app_models_Wallet_getPublicViewKeyJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -299,7 +299,7 @@ Java_com_aeon_app_models_Wallet_getPublicViewKeyJNI(
 }
 
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_Wallet_getSecretSpendKeyJNI(
+Java_org_aeonwallet_app_models_Wallet_getSecretSpendKeyJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -307,7 +307,7 @@ Java_com_aeon_app_models_Wallet_getSecretSpendKeyJNI(
     return env->NewStringUTF(wallet->secretSpendKey().c_str());
 }
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_Wallet_getPublicSpendKeyJNI(
+Java_org_aeonwallet_app_models_Wallet_getPublicSpendKeyJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -315,7 +315,7 @@ Java_com_aeon_app_models_Wallet_getPublicSpendKeyJNI(
     return env->NewStringUTF(wallet->publicSpendKey().c_str());
 }
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_Wallet_getAddressJNI(
+Java_org_aeonwallet_app_models_Wallet_getAddressJNI(
         JNIEnv *env,
         jobject instance,
         jint accountIndex,
@@ -326,7 +326,7 @@ Java_com_aeon_app_models_Wallet_getAddressJNI(
             wallet->address((uint32_t) accountIndex, (uint32_t) addressIndex).c_str());
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getBalanceJNI(
+Java_org_aeonwallet_app_models_Wallet_getBalanceJNI(
         JNIEnv *env,
         jobject instance,
         jint accountIndex
@@ -336,7 +336,7 @@ Java_com_aeon_app_models_Wallet_getBalanceJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getUnlockedBalanceJNI(
+Java_org_aeonwallet_app_models_Wallet_getUnlockedBalanceJNI(
         JNIEnv *env,
         jobject instance,
         jint accountIndex
@@ -346,7 +346,7 @@ Java_com_aeon_app_models_Wallet_getUnlockedBalanceJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getDaemonBlockChainHeightJNI(
+Java_org_aeonwallet_app_models_Wallet_getDaemonBlockChainHeightJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -355,7 +355,7 @@ Java_com_aeon_app_models_Wallet_getDaemonBlockChainHeightJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getDaemonBlockChainTargetHeightJNI(
+Java_org_aeonwallet_app_models_Wallet_getDaemonBlockChainTargetHeightJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -364,7 +364,7 @@ Java_com_aeon_app_models_Wallet_getDaemonBlockChainTargetHeightJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getBlockChainHeightJNI(
+Java_org_aeonwallet_app_models_Wallet_getBlockChainHeightJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -373,7 +373,7 @@ Java_com_aeon_app_models_Wallet_getBlockChainHeightJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getBlockChainHeightEstimateJNI(
+Java_org_aeonwallet_app_models_Wallet_getBlockChainHeightEstimateJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -382,7 +382,7 @@ Java_com_aeon_app_models_Wallet_getBlockChainHeightEstimateJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getRefreshFromBlockHeightJNI(
+Java_org_aeonwallet_app_models_Wallet_getRefreshFromBlockHeightJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -390,7 +390,7 @@ Java_com_aeon_app_models_Wallet_getRefreshFromBlockHeightJNI(
     return wallet->getRefreshFromBlockHeight();
 }
 JNIEXPORT jboolean JNICALL
-Java_com_aeon_app_models_Wallet_isSynchronizedJNI(
+Java_org_aeonwallet_app_models_Wallet_isSynchronizedJNI(
         JNIEnv *env,
         jobject instance
     ) {
@@ -399,7 +399,7 @@ Java_com_aeon_app_models_Wallet_isSynchronizedJNI(
 }
 
 JNIEXPORT void JNICALL
-Java_com_aeon_app_models_Wallet_startRefreshJNI(
+Java_org_aeonwallet_app_models_Wallet_startRefreshJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -407,7 +407,7 @@ Java_com_aeon_app_models_Wallet_startRefreshJNI(
     wallet->startRefresh();
 }
 JNIEXPORT void JNICALL
-Java_com_aeon_app_models_Wallet_pauseRefreshJNI(
+Java_org_aeonwallet_app_models_Wallet_pauseRefreshJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -415,7 +415,7 @@ Java_com_aeon_app_models_Wallet_pauseRefreshJNI(
     wallet->pauseRefresh();
 }
 JNIEXPORT void JNICALL
-Java_com_aeon_app_models_Wallet_setRefreshHeightJNI(
+Java_org_aeonwallet_app_models_Wallet_setRefreshHeightJNI(
         JNIEnv *env,
         jobject instance,
         jlong height
@@ -425,7 +425,7 @@ Java_com_aeon_app_models_Wallet_setRefreshHeightJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getRefreshHeightJNI(
+Java_org_aeonwallet_app_models_Wallet_getRefreshHeightJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -434,7 +434,7 @@ Java_com_aeon_app_models_Wallet_getRefreshHeightJNI(
 }
 
 JNIEXPORT void JNICALL
-Java_com_aeon_app_models_Wallet_storeJNI(
+Java_org_aeonwallet_app_models_Wallet_storeJNI(
         JNIEnv *env,
         jobject instance,
         jstring path
@@ -447,7 +447,7 @@ Java_com_aeon_app_models_Wallet_storeJNI(
 
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_getTransactionHistoryJNI(
+Java_org_aeonwallet_app_models_Wallet_getTransactionHistoryJNI(
         JNIEnv *env,
         jobject instance
     ) {
@@ -456,7 +456,7 @@ Java_com_aeon_app_models_Wallet_getTransactionHistoryJNI(
 }
 
 JNIEXPORT void JNICALL
-Java_com_aeon_app_models_Wallet_disposeTransactionJNI(JNIEnv *env, jobject instance,
+Java_org_aeonwallet_app_models_Wallet_disposeTransactionJNI(JNIEnv *env, jobject instance,
                                            jobject pendingTransaction) {
     Aeon::Wallet *wallet = getHandle<Aeon::Wallet>(env, instance);
     Aeon::PendingTransaction *_pendingTransaction =
@@ -464,7 +464,7 @@ Java_com_aeon_app_models_Wallet_disposeTransactionJNI(JNIEnv *env, jobject insta
     wallet->disposeTransaction(_pendingTransaction);
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_createTransactionJNI(
+Java_org_aeonwallet_app_models_Wallet_createTransactionJNI(
         JNIEnv *env,
         jobject instance,
         jstring dst_address,
@@ -489,7 +489,7 @@ Java_com_aeon_app_models_Wallet_createTransactionJNI(
     return reinterpret_cast<jlong>(pendingTransaction);
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_Wallet_createSweepAllJNI(
+Java_org_aeonwallet_app_models_Wallet_createSweepAllJNI(
         JNIEnv *env,
         jobject instance,
         jstring dst_address,

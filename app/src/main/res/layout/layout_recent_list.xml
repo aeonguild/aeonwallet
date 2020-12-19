@@ -8,5 +8,5 @@
     android:layout_marginLeft="0dp"
     android:layout_marginRight="0dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ui.recent.RecentFragment"
+    tools:context="org.aeonwallet.app.ui.recent.RecentFragment"
     tools:listitem="@layout/layout_recent_item" />

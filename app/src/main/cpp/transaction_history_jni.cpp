@@ -78,7 +78,7 @@ extern "C"
 #endif
 
 JNIEXPORT jint JNICALL
-Java_com_aeon_app_models_TransactionHistory_getCountJNI(
+Java_org_aeonwallet_app_models_TransactionHistory_getCountJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -86,7 +86,7 @@ Java_com_aeon_app_models_TransactionHistory_getCountJNI(
     return transactionHistory->count();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionHistory_getTransactionJNI(
+Java_org_aeonwallet_app_models_TransactionHistory_getTransactionJNI(
         JNIEnv *env,
         jobject instance,
         jint index
@@ -96,7 +96,7 @@ Java_com_aeon_app_models_TransactionHistory_getTransactionJNI(
     return reinterpret_cast<jlong>(transactionInfo);
 }
 JNIEXPORT void JNICALL
-Java_com_aeon_app_models_TransactionHistory_refreshJNI(
+Java_org_aeonwallet_app_models_TransactionHistory_refreshJNI(
         JNIEnv *env,
         jobject instance
 ) {

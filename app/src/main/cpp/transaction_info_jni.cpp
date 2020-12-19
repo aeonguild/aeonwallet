@@ -78,7 +78,7 @@ extern "C"
 #endif
 
 JNIEXPORT jint JNICALL
-Java_com_aeon_app_models_TransactionInfo_getDirectionJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getDirectionJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -90,7 +90,7 @@ Java_com_aeon_app_models_TransactionInfo_getDirectionJNI(
     }
 }
 JNIEXPORT jboolean JNICALL
-Java_com_aeon_app_models_TransactionInfo_isPendingJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_isPendingJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -98,7 +98,7 @@ Java_com_aeon_app_models_TransactionInfo_isPendingJNI(
     return transactionInfo->isPending();
 }
 JNIEXPORT jboolean JNICALL
-Java_com_aeon_app_models_TransactionInfo_isFailedJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_isFailedJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -106,7 +106,7 @@ Java_com_aeon_app_models_TransactionInfo_isFailedJNI(
     return transactionInfo->isFailed();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionInfo_getAmountJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getAmountJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -114,7 +114,7 @@ Java_com_aeon_app_models_TransactionInfo_getAmountJNI(
     return transactionInfo->amount();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionInfo_getFeeJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getFeeJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -122,7 +122,7 @@ Java_com_aeon_app_models_TransactionInfo_getFeeJNI(
     return transactionInfo->fee();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionInfo_getHeightJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getHeightJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -130,7 +130,7 @@ Java_com_aeon_app_models_TransactionInfo_getHeightJNI(
     return transactionInfo->blockHeight();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionInfo_getConfirmationsJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getConfirmationsJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -138,7 +138,7 @@ Java_com_aeon_app_models_TransactionInfo_getConfirmationsJNI(
     return transactionInfo->confirmations();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionInfo_getUnlockTimeJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getUnlockTimeJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -146,7 +146,7 @@ Java_com_aeon_app_models_TransactionInfo_getUnlockTimeJNI(
     return transactionInfo->unlockTime();
 }
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_TransactionInfo_getHashJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getHashJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -154,7 +154,7 @@ Java_com_aeon_app_models_TransactionInfo_getHashJNI(
     return env->NewStringUTF(transactionInfo->hash().c_str());
 }
 JNIEXPORT jstring JNICALL
-Java_com_aeon_app_models_TransactionInfo_getPaymentIdJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getPaymentIdJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -162,7 +162,7 @@ Java_com_aeon_app_models_TransactionInfo_getPaymentIdJNI(
     return env->NewStringUTF(transactionInfo->paymentId().c_str());
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionInfo_getTimestampJNI(
+Java_org_aeonwallet_app_models_TransactionInfo_getTimestampJNI(
         JNIEnv *env,
         jobject instance
 ) {

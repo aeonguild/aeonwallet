@@ -11,5 +11,5 @@
     android:background="@drawable/corners"
     android:padding="4dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ui.node.NodeFragment"
+    tools:context="org.aeonwallet.app.ui.node.NodeFragment"
     tools:listitem="@layout/layout_node_item" />

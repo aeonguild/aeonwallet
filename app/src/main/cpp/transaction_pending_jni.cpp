@@ -78,7 +78,7 @@ extern "C"
 #endif
 
 JNIEXPORT jint JNICALL
-Java_com_aeon_app_models_TransactionPending_getStatusJNI(
+Java_org_aeonwallet_app_models_TransactionPending_getStatusJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -87,7 +87,7 @@ Java_com_aeon_app_models_TransactionPending_getStatusJNI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionPending_getFeeJNI(
+Java_org_aeonwallet_app_models_TransactionPending_getFeeJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -95,7 +95,7 @@ Java_com_aeon_app_models_TransactionPending_getFeeJNI(
     return pendingTransaction->fee();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionPending_getAmountJNI(
+Java_org_aeonwallet_app_models_TransactionPending_getAmountJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -103,7 +103,7 @@ Java_com_aeon_app_models_TransactionPending_getAmountJNI(
     return pendingTransaction->amount();
 }
 JNIEXPORT jlong JNICALL
-Java_com_aeon_app_models_TransactionPending_getDustJNI(
+Java_org_aeonwallet_app_models_TransactionPending_getDustJNI(
         JNIEnv *env,
         jobject instance
 ) {
@@ -111,7 +111,7 @@ Java_com_aeon_app_models_TransactionPending_getDustJNI(
     return pendingTransaction->dust();
 }
 JNIEXPORT jboolean JNICALL
-Java_com_aeon_app_models_TransactionPending_commitJNI(JNIEnv *env, jobject instance) {
+Java_org_aeonwallet_app_models_TransactionPending_commitJNI(JNIEnv *env, jobject instance) {
     Aeon::PendingTransaction *pendingTransaction = getHandle<Aeon::PendingTransaction>(env, instance);
     bool success = pendingTransaction->commit();
     return static_cast<jboolean>(success);
