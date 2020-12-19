@@ -91,7 +91,7 @@ public class ButtonActions extends AppCompatActivity {
                         layout = findViewById(R.id.layout_keys_input);
                         layout.setVisibility(View.GONE);
                     } else {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), MainActivity.getString("toast_passwords_do_not_match"), Toast.LENGTH_SHORT);
                         toast.show();
                         WalletFragment.closeWalletView(walletFragmentLayout);
                     }
@@ -113,7 +113,7 @@ public class ButtonActions extends AppCompatActivity {
         EditText editText = seedLayout.findViewById(R.id.text_restore_height);
         if(!editText.getText().toString().equals("") && !textView.getText().toString().equals("")) {
             String seed = textView.getText().toString().trim();
-            int restoreHeight = Integer.parseInt(editText.getText().toString());
+            long restoreHeight = Long.parseLong(editText.getText().toString());
             if (thread == null || !thread.isRunning) {
                 seedLayout.setVisibility(View.GONE);
                 TextView passwordInfo = findViewById(R.id.text_wallet_password_info);
@@ -147,10 +147,10 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
-                            Toast toast = Toast.makeText(getApplicationContext(), "Wallet created.", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_wallet_loaded"), Toast.LENGTH_SHORT);
                             toast.show();
                         } else {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_passwords_do_not_match"), Toast.LENGTH_SHORT);
                             toast.show();
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
@@ -180,7 +180,7 @@ public class ButtonActions extends AppCompatActivity {
             String account = account_text.getText().toString();
             String view = view_text.getText().toString();
             String spend = spend_text.getText().toString();
-            int restoreHeight = Integer.parseInt(restore_height_text.getText().toString());
+            long restoreHeight = Long.parseLong(restore_height_text.getText().toString());
             if (thread == null || !thread.isRunning) {
                 layout.setVisibility(View.GONE);
                 TextView passwordInfo = findViewById(R.id.text_wallet_password_info);
@@ -214,10 +214,10 @@ public class ButtonActions extends AppCompatActivity {
                             layout.setVisibility(View.GONE);
                             layout = findViewById(R.id.layout_keys_input);
                             layout.setVisibility(View.GONE);
-                            Toast toast = Toast.makeText(getApplicationContext(), "Wallet created.", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_wallet_loaded"), Toast.LENGTH_SHORT);
                             toast.show();
                         } else {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_passwords_do_not_match"), Toast.LENGTH_SHORT);
                             toast.show();
                             WalletFragment.closeWalletView(walletFragmentLayout);
                         }
@@ -288,10 +288,10 @@ public class ButtonActions extends AppCompatActivity {
         Button confirm = findViewById(R.id.button_confirm_send);
         if(password.getText().toString().equals(getPassword())){
             BackgroundThread.confirmTransaction();
-            Toast toast = Toast.makeText(getApplicationContext(), "Transaction submitted.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_transaction_submitted"), Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Wrong password.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_wrong_password"), Toast.LENGTH_SHORT);
             toast.show();
         }
         password.setText("");
@@ -315,10 +315,10 @@ public class ButtonActions extends AppCompatActivity {
                     WalletFragment.closeWalletView(walletFragmentLayout);
                     thread.interrupt();
                     clearPath();
-                    Toast toast = Toast.makeText(getApplicationContext(), "Wallet destroyed.", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_wallet_destroyed"), Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong password.", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_wrong_password"), Toast.LENGTH_SHORT);
                     toast.show();
                     WalletFragment.openWalletView(walletFragmentLayout);
                 }
@@ -368,7 +368,7 @@ public class ButtonActions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 NodeContent.reset();
-                BackgroundThread.setNode(Node.pickRandom());
+                BackgroundThread.setNode();
                 address.setEnabled(false);
                 address.setText(null);
                 address.setVisibility(View.GONE);
@@ -428,10 +428,10 @@ public class ButtonActions extends AppCompatActivity {
                 if(password.getText().toString().equals(getPassword())){
                     WalletFragment.openWalletView(walletFragmentLayout);
                     WalletFragment.walletAdapter.showSecretInfo();
-                    Toast toast = Toast.makeText(getApplicationContext(), "Secret info visible above.", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_secret_info_available_above"), Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong password.", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_wrong_password"), Toast.LENGTH_SHORT);
                     toast.show();
                     WalletFragment.openWalletView(walletFragmentLayout);
                 }

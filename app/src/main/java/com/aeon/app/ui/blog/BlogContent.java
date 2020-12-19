@@ -6,9 +6,12 @@ import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import android.os.Handler;
+import android.os.Looper;
 
 import com.aeon.app.ui.contact.ContactContent;
 import com.aeon.app.ui.contact.ContactFragment;
+import com.aeon.app.ui.transfer.TransferFragment;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -91,6 +94,13 @@ public class BlogContent {
                     }
                 }
             }
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    TransferFragment.blogAdapter.notifyDataSetChanged();
+                }
+            });
         }
             }).start();
     }

@@ -58,4 +58,11 @@ public class Node {
         Node newNode  = nodes.get(new Random().nextInt(nodes.size()));
         return new Node(newNode.hostAddress, newNode.hostPort);
     }
+    public static Node pickRandom(String ip){
+        Node newNode  = nodes.get(new Random().nextInt(nodes.size()));
+        while(newNode.hostAddress.equals(ip)){
+            newNode  = nodes.get(new Random().nextInt(nodes.size()));
+        }
+        return new Node(newNode.hostAddress, newNode.hostPort);
+    }
 }

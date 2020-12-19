@@ -45,7 +45,7 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mDateView.setText(String.valueOf(mValues.size() - position)+" : "+String.valueOf(new java.util.Date((long)holder.mItem.timestamp*1000))+" : "+String.valueOf(holder.mItem.height));
+        holder.mDateView.setText(String.valueOf(mValues.size() - position)+" : "+String.valueOf(holder.mItem.height)+" : "+String.valueOf(new java.util.Date((long)holder.mItem.timestamp*1000)));
         if(holder.mItem.direction== TransactionInfo.Direction.In) {
             holder.mContentView.setText("+ "+String.valueOf(holder.mItem.amount.toPlainString()));
         }else {

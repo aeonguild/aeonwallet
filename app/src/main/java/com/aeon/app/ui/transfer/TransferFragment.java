@@ -48,8 +48,11 @@ public class TransferFragment extends Fragment {
     public static Group onboardGroup;
     public static TextView text_balance;
     public static TextView text_available;
+    public static TextView text_node;
     public static String available= "";
     public static String balance= "";
+    public static String height= "";
+    public static String ip= "";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +66,7 @@ public class TransferFragment extends Fragment {
         onboardGroup = view.findViewById(R.id.group_onboard);
         text_available = view.findViewById(R.id.text_available);
         text_balance = view.findViewById(R.id.text_balance);
+        text_node = view.findViewById(R.id.text_node);
         return view;
     }
     @Override
@@ -80,6 +84,13 @@ public class TransferFragment extends Fragment {
             text_available.setText(available);
             text_balance.setText(balance);
         }
+        if(text_node!=null) {
+            if(!height.equals("")) {
+                text_node.setText(MainActivity.getString("text_connected_to")+" "+ip + " @ " + height);
+            } else{
+                text_node.setText(MainActivity.getString("text_connecting_to_aeon_network"));
+            }
+        }
     }
 
     public static void updateWalletInfo(String available2, String balance2){
@@ -88,6 +99,13 @@ public class TransferFragment extends Fragment {
         if(text_available!=null) {
             text_available.setText(available);
             text_balance.setText(balance);
+        }
+    }
+    public static void updateNodeInfo(String height2, String ip2){
+        height = height2;
+        ip = ip2;
+        if(text_node!=null) {
+            text_node.setText(MainActivity.getString("text_connected_to")+" "+ip + " @ " + height);
         }
     }
 }

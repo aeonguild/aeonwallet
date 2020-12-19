@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="
-            text_available,text_balance,
+            text_available,text_balance,text_node,
             button_receive,button_send,
             text_label_aeon_news,
             rv_blog_list" />
@@ -49,8 +49,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/lindsaybecker"
             android:text="@string/title_aeon_news"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_send" />
 
@@ -68,26 +70,14 @@
             app:layout_constraintTop_toBottomOf="@+id/text_label_aeon_news" />
 
 
-        <ImageView
-            android:id="@+id/background_coins"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_available"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_balance"
-            app:srcCompat="@drawable/corners" />
-
         <TextView
             android:id="@+id/text_available"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:ellipsize="marquee"
-            android:focusable="false"
+            android:focusable="auto"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:selectAllOnFocus="true"
@@ -98,27 +88,49 @@
             android:textSize="30sp"
             android:typeface="monospace"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/background_coins"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_balance" />
+
 
         <TextView
             android:id="@+id/text_balance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:ellipsize="marquee"
-            android:focusable="false"
+            android:focusable="auto"
+            android:fontFamily="@font/lindsaybecker"
+            android:gravity="center_vertical|end"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:textAlignment="textEnd"
             android:textIsSelectable="true"
-            android:typeface="monospace"
+            android:textSize="14sp"
+            android:typeface="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/background_coins"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/text_node"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/lindsaybecker"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button_send"
@@ -127,14 +139,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:padding="16dp"
             android:layout_marginEnd="4dp"
             android:onClick="goToSendFragment"
+            android:padding="16dp"
             android:text="@string/title_send"
             app:layout_constraintEnd_toStartOf="@+id/button_receive"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/background_coins" />
+            app:layout_constraintTop_toBottomOf="@+id/text_available" />
 
         <Button
             android:id="@+id/button_receive"
@@ -144,13 +156,13 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:padding="16dp"
             android:onClick="goToReceiveFragment"
+            android:padding="16dp"
             android:text="@string/title_receive"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/button_send"
-            app:layout_constraintTop_toBottomOf="@+id/background_coins" />
+            app:layout_constraintTop_toBottomOf="@+id/text_available" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,7 +98,7 @@ public class BackgroundThread extends Thread{
         wallet = new Wallet(path,MainActivity.getPassword(),"English");
         isManaging = true;
     }
-    public static void queueWallet(String path, String seed, int restoreHeight){
+    public static void queueWallet(String path, String seed, long restoreHeight){
         Log.v(TAG, "queueWallet");
         BackgroundThread.path = path;
         BackgroundThread.seed = null;
@@ -106,7 +106,7 @@ public class BackgroundThread extends Thread{
         isManaging = true;
     }
 
-    public static void queueWallet(String path, String account, String view, String spend, int restoreHeight) {
+    public static void queueWallet(String path, String account, String view, String spend, long restoreHeight) {
         Log.v(TAG, "queueWallet");
         BackgroundThread.path = path;
         BackgroundThread.seed = null;
@@ -145,6 +145,14 @@ public class BackgroundThread extends Thread{
         Log.v(TAG, "setNode");
         BackgroundThread.node = node;
         isNodeChanged = true;
+    }
+    public static void setNode() {
+        Log.v(TAG, "setNode");
+        if(BackgroundThread.node==null){
+            setNode(Node.pickRandom());
+        } else {
+            setNode(Node.pickRandom(BackgroundThread.node.hostAddress));
+        }
     }
 
     private void clearTransactionQueue(){
@@ -198,6 +206,7 @@ public class BackgroundThread extends Thread{
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_status"), String.valueOf(wallet.status)));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_path"), wallet.path));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_transaction_count"), MainActivity.getString("text_unknown")));
+        WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_restore_height"),String.valueOf(wallet.restoreHeight)));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_public_spend_key"), wallet.publicSpendKey));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_public_view_key"), wallet.publicViewKey));
         WalletContent.addItem(new WalletContent.Item(MainActivity.getString("row_wallet_seed"), wallet.seed));
@@ -243,11 +252,12 @@ public class BackgroundThread extends Thread{
         WalletContent.updateItem(MainActivity.getString("row_wallet_synchronized"), String.valueOf(wallet.isSynchronized));
         WalletContent.updateItem(MainActivity.getString("row_wallet_status"), String.valueOf(wallet.status));
         WalletContent.updateItem(MainActivity.getString("row_wallet_synchronized_height"), String.valueOf(wallet.height));
+        WalletContent.updateItem(MainActivity.getString("row_wallet_restore_height"), String.valueOf(wallet.restoreHeight));
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
             public void run() {
-                TransferFragment.updateWalletInfo(wallet.unlockedBalance.toPlainString(),"("+wallet.balance.toPlainString()+")");
+                TransferFragment.updateWalletInfo(wallet.unlockedBalance.toPlainString(),wallet.balance.toPlainString());
                 ReceiveFragment.updateAddress(wallet.address);
             }
         });
@@ -267,5 +277,12 @@ public class BackgroundThread extends Thread{
         } else if (wallet.connectionStatus == Wallet.ConnectionStatus.Connected){
             isConnected = true;
         }
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                TransferFragment.updateNodeInfo(String.valueOf(wallet.node.height),String.valueOf(wallet.node.hostAddress));
+            }
+        });
     }
 }

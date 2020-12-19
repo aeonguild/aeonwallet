@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aeon.app.models.Node;
 import com.aeon.app.ui.contact.ContactContent;
@@ -136,6 +137,8 @@ public class MainActivity extends ButtonActions {
         String path = sharedPref.getString("path" , null);
         this.password = sharedPref.getString("password" , null);
         if(!BackgroundThread.isManaging && path != null){
+            Toast toast = Toast.makeText(getApplicationContext(), getString("toast_wallet_found"), Toast.LENGTH_SHORT);
+            toast.show();
             thread = new BackgroundThread();
             thread.start();
             WalletContent.clearItems();

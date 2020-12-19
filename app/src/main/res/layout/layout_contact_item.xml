@@ -21,6 +21,7 @@
             android:layout_weight=".25"
             android:clickable="true"
             android:focusable="true"
+            android:fontFamily="@font/lindsaybecker"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textStyle="bold|italic" />
 
