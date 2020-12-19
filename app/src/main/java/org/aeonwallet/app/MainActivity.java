@@ -120,9 +120,11 @@ public class MainActivity extends ButtonActions {
         final Set<String> keys = sharedPref.getAll().keySet();
         for(String key : keys){
             if(!key.equals("path")&&!key.equals("password")&&!key.equals("ip")&&!key.equals("port") ){
-                ContactContent.addItem(
-                        new ContactContent.Contact(sharedPref.getString(key, ""), key)
-                );
+                if(!sharedPref.getString(key, "").equals("")){
+                    ContactContent.addItem(
+                            new ContactContent.Contact(sharedPref.getString(key, ""), key)
+                    );
+                }
             }
         }
     }

@@ -60,7 +60,7 @@ public class ContactFragment extends Fragment {
                 String address = ContactContent.ITEMS.get(position).address;
                 ContactContent.deleteItem(position);
                 contactAdapter.notifyDataSetChanged();
-                MainActivity.deletePreference(address,getActivity().getSharedPreferences("MainActivity",Context.MODE_PRIVATE));
+                ((MainActivity) getActivity()).setPreference(address,null);
             }
         };
         Context context = view.getContext();

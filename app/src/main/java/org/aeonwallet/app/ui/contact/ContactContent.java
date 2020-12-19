@@ -38,6 +38,11 @@ public class ContactContent {
             ITEM_MAP.put(item.address, ITEMS.size()-1);
             notifyDataSetChanged(ContactFragment.contactAdapter);
             notifyDataSetChanged(SendFragment.contactAdapter);
+        } else {
+            int position = ITEM_MAP.get(item.address);
+            ITEMS.set(position, item);
+            notifyDataSetChanged(ContactFragment.contactAdapter);
+            notifyDataSetChanged(SendFragment.contactAdapter);
         }
     }
     public static void clearItems() {
