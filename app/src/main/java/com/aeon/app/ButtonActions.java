@@ -39,6 +39,7 @@ import com.aeon.app.ui.node.NodeContent;
 import com.aeon.app.ui.transfer.TransferFragment;
 import com.aeon.app.ui.wallet.WalletContent;
 import com.aeon.app.ui.wallet.WalletFragment;
+import com.aeon.app.util.Base58;
 import com.aeon.app.util.SeedWords;
 import com.aeon.app.util.SpaceTokenizer;
 
@@ -266,20 +267,26 @@ public class ButtonActions extends AppCompatActivity {
         EditText recipientInfo = (EditText)findViewById(R.id.transfer_recipient_info);
         EditText amountInfo = (EditText)findViewById(R.id.transfer_amount_info);
         EditText paymentID = (EditText)findViewById(R.id.text_payment_id);
-        if(!recipientInfo.getText().toString().equals("")&&!amountInfo.getText().toString().equals("")) {
-            if (paymentID.getVisibility() == View.VISIBLE) {
-                BackgroundThread.queueTransaction(
-                        recipientInfo.getText().toString(),
-                        (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue()),
-                        paymentID.getText().toString()
-                );
+        if(!recipientInfo.getText().toString().equals("") &&
+                !amountInfo.getText().toString().equals("") ) {
+            if( Base58.isValidAddress(recipientInfo.getText().toString())) {
+                if (paymentID.getVisibility() == View.VISIBLE) {
+                    BackgroundThread.queueTransaction(
+                            recipientInfo.getText().toString(),
+                            (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue()),
+                            paymentID.getText().toString()
+                    );
+                } else {
+                    BackgroundThread.queueTransaction(
+                            recipientInfo.getText().toString(),
+                            (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
+                    );
+                }
+                goToTransactionPendingFragment(v);
             } else {
-                BackgroundThread.queueTransaction(
-                        recipientInfo.getText().toString(),
-                        (new BigDecimal(amountInfo.getText().toString()).movePointRight(12).longValue())
-                );
+                Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_invalid_address"), Toast.LENGTH_SHORT);
+                toast.show();
             }
-            goToTransactionPendingFragment(v);
         }
     }
 
@@ -396,11 +403,17 @@ public class ButtonActions extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!label.getText().toString().equals("") && !address.getText().toString().equals("")) {
-                    setPreference(address.getText().toString(),label.getText().toString());
-                    ContactContent.addItem(new ContactContent.Contact(
-                            label.getText().toString(),
-                            address.getText().toString()));
+                if(!label.getText().toString().equals("") &&
+                        !address.getText().toString().equals("")) {
+                        if(Base58.isValidAddress(address.getText().toString())) {
+                            setPreference(address.getText().toString(), label.getText().toString());
+                            ContactContent.addItem(new ContactContent.Contact(
+                                    label.getText().toString(),
+                                    address.getText().toString()));
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), MainActivity.getString("toast_invalid_address"), Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
                 }
                 label.setEnabled(false);
                 address.setEnabled(false);

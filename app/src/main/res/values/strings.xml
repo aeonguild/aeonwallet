@@ -88,6 +88,7 @@
     <string name="toast_wallet_loaded">Wallet loaded.</string>
     <string name="toast_transaction_submitted">Transaction submitted.</string>
     <string name="toast_wrong_password">Wrong PIN.</string>
+    <string name="toast_invalid_address">Invalid address format.</string>
     <string name="toast_wallet_destroyed">Wallet destroyed.</string>
     <string name="toast_secret_info_available_above">Secret wallet information is
         visible in the table above.</string>
