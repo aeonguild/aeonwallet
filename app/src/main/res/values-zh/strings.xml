@@ -60,6 +60,7 @@
     <string name="text_contact_hint_address">联系人地址</string>
     <string name="text_create">创建</string>
     <string name="text_creating_transaction">正在创建交易...</string>
+    <string name="text_disconnected">Disconnected</string>
     <string name="text_ip_address">127.0.0.1:11181</string>
     <string name="text_loading_wallet">钱包加载中...</string>
     <string name="text_new_address">选择新钱包索引</string>

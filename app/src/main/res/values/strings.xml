@@ -55,7 +55,8 @@
     <string name="text_amount">Amount</string>
     <string name="text_confirm_pin">Confirm Phone PIN</string>
     <string name="text_connected_to">Connected to </string>
-    <string name="text_connecting_to_aeon_network">Connecting to Aeon network...</string>
+    <string name="text_disconnected">Disconnected</string>
+    <string name="text_connecting_to_aeon_network">Connecting to the Aeon network...</string>
     <string name="text_contact_hint_name">Contact Name</string>
     <string name="text_contact_hint_address">Contact Address</string>
     <string name="text_create">Create</string>

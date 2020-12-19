@@ -23,62 +23,48 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aeon.app.R;
-import com.aeon.app.ui.contact.ContactContent.Contact;
+import com.aeon.app.ui.contact.ContactContent;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link Contact}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
 
-    private final List<Contact> mValues;
+    private final List<ContactContent.Contact> mValues;
 
-    public ContactAdapter(List<Contact> items) {
+    public ContactAdapter(List<ContactContent.Contact> items) {
         mValues = items;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ContactAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_contact_item, parent, false);
-        return new ViewHolder(view);
+        return new ContactAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.setIsRecyclable(false);
+    public void onBindViewHolder(final ContactAdapter.ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mNameView.setText(mValues.get(position).name);
-        String address = mValues.get(position).address;
-        holder.mAddressView.setText(address);
+        holder.mAddressView.setText(mValues.get(position).address);
     }
 
     @Override
     public int getItemCount() {
         return mValues.size();
     }
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mNameView;
         public final TextView mAddressView;
-        public Contact mItem;
+        public ContactContent.Contact mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mNameView = (TextView) view.findViewById(R.id.name);
-            mAddressView = (TextView) view.findViewById(R.id.address);
+            mNameView = (TextView) view.findViewById(R.id.contact_name);
+            mAddressView = (TextView) view.findViewById(R.id.contact_address);
         }
 
         @Override

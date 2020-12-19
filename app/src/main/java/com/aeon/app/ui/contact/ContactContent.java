@@ -36,10 +36,12 @@ public class ContactContent {
     public static final Map<String, Integer> ITEM_MAP = new HashMap<String, Integer>();
 
     public static void addItem(Contact item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.address, ITEMS.size()-1);
-        notifyDataSetChanged(ContactFragment.contactAdapter);
-        notifyDataSetChanged(SendFragment.contactAdapter);
+        if(!ITEM_MAP.containsKey(item.address)) {
+            ITEMS.add(item);
+            ITEM_MAP.put(item.address, ITEMS.size()-1);
+            notifyDataSetChanged(ContactFragment.contactAdapter);
+            notifyDataSetChanged(SendFragment.contactAdapter);
+        }
     }
     public static void clearItems() {
         ITEMS.clear();

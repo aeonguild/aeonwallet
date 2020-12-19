@@ -88,9 +88,9 @@
             android:textSize="30sp"
             android:typeface="monospace"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_balance" />
-
 
         <TextView
             android:id="@+id/text_balance"
@@ -100,7 +100,6 @@
             android:layout_marginEnd="16dp"
             android:ellipsize="marquee"
             android:focusable="auto"
-            android:fontFamily="@font/lindsaybecker"
             android:gravity="center_vertical|end"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
@@ -109,11 +108,11 @@
             android:textAlignment="textEnd"
             android:textIsSelectable="true"
             android:textSize="14sp"
-            android:typeface="normal"
+            android:typeface="monospace"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/text_node" />
 
         <TextView
             android:id="@+id/text_node"
@@ -121,16 +120,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/lindsaybecker"
             android:gravity="center_vertical"
             android:maxLines="1"
-            android:textAlignment="center"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textAlignment="viewEnd"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button_send"

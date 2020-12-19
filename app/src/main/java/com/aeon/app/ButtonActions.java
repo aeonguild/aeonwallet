@@ -293,6 +293,7 @@ public class ButtonActions extends AppCompatActivity {
     public void confirmTransaction(View v) {
         EditText password = findViewById(R.id.text_transfer_password);
         Button confirm = findViewById(R.id.button_confirm_send);
+        hideKeyboard();
         if(password.getText().toString().equals(getPassword())){
             BackgroundThread.confirmTransaction();
             Toast toast = Toast.makeText(getApplicationContext(),MainActivity.getString("toast_transaction_submitted"), Toast.LENGTH_SHORT);

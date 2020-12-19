@@ -281,7 +281,12 @@ public class BackgroundThread extends Thread{
         handler.post(new Runnable() {
             @Override
             public void run() {
-                TransferFragment.updateNodeInfo(String.valueOf(wallet.node.height),String.valueOf(wallet.node.hostAddress));
+
+                if(wallet.connectionStatus.equals(Wallet.ConnectionStatus.Connected)) {
+                    TransferFragment.updateNodeInfo(String.valueOf(wallet.node.height), String.valueOf(wallet.node.hostAddress));
+                } else{
+                    TransferFragment.updateNodeInfo(String.valueOf(-1), "");
+                }
             }
         });
     }

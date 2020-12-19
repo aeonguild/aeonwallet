@@ -85,9 +85,11 @@ public class TransferFragment extends Fragment {
             text_balance.setText(balance);
         }
         if(text_node!=null) {
-            if(!height.equals("")) {
+            if(height.equals(String.valueOf(-1))){
+                text_node.setText(MainActivity.getString("text_disconnected"));
+            } else if(!height.equals("")) {
                 text_node.setText(MainActivity.getString("text_connected_to")+" "+ip + " @ " + height);
-            } else{
+            } else {
                 text_node.setText(MainActivity.getString("text_connecting_to_aeon_network"));
             }
         }
@@ -105,7 +107,11 @@ public class TransferFragment extends Fragment {
         height = height2;
         ip = ip2;
         if(text_node!=null) {
-            text_node.setText(MainActivity.getString("text_connected_to")+" "+ip + " @ " + height);
+            if(!height.equals(String.valueOf(-1))) {
+                text_node.setText(MainActivity.getString("text_connected_to") + " " + ip + " @ " + height);
+            } else{
+                text_node.setText(MainActivity.getString("text_disconnected"));
+            }
         }
     }
 }

@@ -31,12 +31,8 @@ import android.widget.Toast;
 
 import com.aeon.app.MainActivity;
 import com.aeon.app.R;
-
-/**
- * A fragment representing a list of Items.
- */
 public class ContactFragment extends Fragment {
-    public static ContactAdapter contactAdapter = null;
+    public static ContactAdapter contactAdapter;
 
     public ContactFragment() {
     }
@@ -51,8 +47,6 @@ public class ContactFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
-        Context context = view.getContext();
-        RecyclerView rv = view.findViewById(R.id.rv_contact_item_list);
         //https://stackoverflow.com/a/40374244
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT ) {
 
@@ -71,10 +65,10 @@ public class ContactFragment extends Fragment {
                 MainActivity.deletePreference(address,getActivity().getSharedPreferences("MainActivity",Context.MODE_PRIVATE));
             }
         };
+        Context context = view.getContext();
+        RecyclerView rv = view.findViewById(R.id.rv_contact_item_list);
         rv.setLayoutManager(new GridLayoutManager(context, 1));
-        if(contactAdapter ==null) {
-            contactAdapter = new ContactAdapter(ContactContent.ITEMS);
-        }
+        contactAdapter = new ContactAdapter(ContactContent.ITEMS);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(rv);
         rv.setAdapter(contactAdapter);
