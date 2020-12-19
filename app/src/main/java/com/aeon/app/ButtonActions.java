@@ -451,9 +451,19 @@ public class ButtonActions extends AppCompatActivity {
         setPreference("password",password);
     }
     public void setPreference(String key,String value){
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(key,value);
+        editor.apply();
+    }
+    public static void setPreference(String key,String value,SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(key,value);
+        editor.apply();
+    }
+    public static void deletePreference(String key,SharedPreferences sharedPref){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(key);
         editor.apply();
     }
     public static String getPassword(){
