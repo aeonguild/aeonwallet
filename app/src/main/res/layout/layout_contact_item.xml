@@ -22,8 +22,7 @@
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/lindsaybecker"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:textStyle="bold|italic" />
+            android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
             android:id="@+id/contact_address"
