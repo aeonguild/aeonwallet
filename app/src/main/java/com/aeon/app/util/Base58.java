@@ -36,11 +36,10 @@ public class Base58 {
     }
 
     public static boolean isValidAddress(String address){
-       if( containsAllChars(alphabet, address)){
-           if((address.startsWith("W") || address.startsWith("X")) && address.length() == 95){
-               return true;
-           }
+       if( containsAllChars(alphabet, address) && (address.startsWith("W") || address.startsWith("X")) && address.length() == 97){
+           return true;
+       } else {
+           return false;
        }
-       return false;
     }
 }
